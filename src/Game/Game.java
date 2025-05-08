@@ -50,7 +50,7 @@ public class Game implements Runnable{
 	// Resource
 		BufferedImage BackGround;
 		BufferedImage player;
-		
+		BufferedImage[] tilemap = new BufferedImage[10];
 	//
 	
 	public Game() {
@@ -61,6 +61,11 @@ public class Game implements Runnable{
 		Display.addInputListener(input);
 		BackGround = ResourceLoader.loadimage("102079.jpg");
 		player = ResourceLoader.loadimage("tmp1.png");
+		for (int i = 0; i < 10; i++) {
+			String tmp = "tileset/1 ("+(String.valueOf(i+1)) +").png";
+			System.out.println(tmp);
+		tilemap[i] = ResourceLoader.loadimage(tmp);
+		}
 	}
 	
 	public synchronized void start() {
