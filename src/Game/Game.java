@@ -14,7 +14,7 @@ import utils.*;
 public class Game implements Runnable{
 	
 	public static final int     Width          = 640;
-	public static final int     Height         = 360;
+	public static final int     Height         = 352;
 	public static final String  Title          = "";
 	public static final int     _clearColor    = 0xFFFFFFFF;
 	public static final int      numBuffers    = 3;
@@ -36,6 +36,8 @@ public class Game implements Runnable{
 		float g = 1;
 		float jumpForce = 2;
 		float playerSpeed = 1.5f;
+		
+		
 	// Game
 		int px;
 		int py;
@@ -43,8 +45,9 @@ public class Game implements Runnable{
 		int pw;
 		float sx;
 		float sy;
-		
-		
+		int Gmax = Width/16;
+		int Gmay = Height/16;
+		block[] level = new block[Gmax*Gmay];
 		
 		
 	// Resource
@@ -62,10 +65,24 @@ public class Game implements Runnable{
 		BackGround = ResourceLoader.loadimage("102079.jpg");
 		player = ResourceLoader.loadimage("tmp1.png");
 		for (int i = 0; i < 10; i++) {
-			String tmp = "tileset/1 ("+(String.valueOf(i+1)) +").png";
+			String tmp = "tileset/1 (" + (String.valueOf(i+1)) +").png";
 			System.out.println(tmp);
 		tilemap[i] = ResourceLoader.loadimage(tmp);
 		}
+		for (int i = 0; i < level.length; i++) {
+			
+			int x = i%Gmax;
+			int y = i/Gmax;
+			level[i] = new block(x*16,y*16,false,(int) (Math.random()*10),null);
+			
+		}
+		for (int i = 0; i < 10; i++) {
+			
+			int x = i%Gmax;
+			int y = i/Gmax;
+			level[i] = new block(x*16,y*16,false,i,null);
+			
+		}	
 	}
 	
 	public synchronized void start() {
@@ -128,10 +145,22 @@ public class Game implements Runnable{
 		graphics.drawImage(BackGround,0,0,null);
 		graphics.scale(1/sx, 1/sy);
 		
-		graphics.drawImage(player, px, py, null);
+		
 		
 		graphics.drawString(String.valueOf(Math.round(this.sx)), 0, 10);
 		
+		for(int i = 0; i < level.length; i++) {
+			
+			int x = level[i].x;
+			int y = level[i].y;
+			int texture = level[i].texture;
+			
+			graphics.drawImage(tilemap[texture], x, y, null);
+				
+				
+			
+		}
+		graphics.drawImage(player, px, py, null);
 		Display.swapBuffers();
 	}
 	
