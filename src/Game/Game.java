@@ -47,13 +47,13 @@ public class Game implements Runnable{
 		float sy;
 		int Gmax = Width/16;
 		int Gmay = Height/16;
-		block[] level = new block[Gmax*Gmay];
+		block[] level;
 		
 		
 	// Resource
 		BufferedImage BackGround;
 		BufferedImage player;
-		BufferedImage[] tilemap = new BufferedImage[10];
+		BufferedImage[] tilemap = new BufferedImage[11];
 	//
 	
 	public Game() {
@@ -65,24 +65,18 @@ public class Game implements Runnable{
 		BackGround = ResourceLoader.loadimage("102079.jpg");
 		player = ResourceLoader.loadimage("tmp1.png");
 		for (int i = 0; i < 10; i++) {
-			String tmp = "tileset/1 (" + (String.valueOf(i+1)) +").png";
+			String tmp = "tileset/1 (" + (String.valueOf(i)) +").png";
 			System.out.println(tmp);
 		tilemap[i] = ResourceLoader.loadimage(tmp);
 		}
-		for (int i = 0; i < level.length; i++) {
+		/*for (int i = 0; i < level.length; i++) {
 			
 			int x = i%Gmax;
 			int y = i/Gmax;
-			level[i] = new block(x*16,y*16,false,(int) (Math.random()*10),null);
+			level[i] = new block(x*16,y*16,false,(int) (Math.random()*11),null);
 			
-		}
-		for (int i = 0; i < 10; i++) {
-			
-			int x = i%Gmax;
-			int y = i/Gmax;
-			level[i] = new block(x*16,y*16,false,i,null);
-			
-		}	
+		}*/
+		level = maps.map1;
 	}
 	
 	public synchronized void start() {
@@ -115,6 +109,18 @@ public class Game implements Runnable{
 	
 	private void update() {
 		
+		for(int i = 0; i < level.length;i++) {
+			if (level[i].action != null)
+			level[i].action.run();
+		}
+		
+		playerUP();
+		
+		
+	}
+	
+	private void playerUP() {
+		
 		sx += (util.BiI(input.getKey(KeyEvent.VK_RIGHT))-util.BiI(input.getKey(KeyEvent.VK_LEFT)))*playerSpeed;
 		sy -= (util.BiI(input.getKey(KeyEvent.VK_UP))-util.BiI(input.getKey(KeyEvent.VK_DOWN)))*playerSpeed;
 		
@@ -131,8 +137,6 @@ public class Game implements Runnable{
 		}
 		
 		sx = sx*0.8f;
-		
-		
 		
 	}
 	
@@ -151,8 +155,9 @@ public class Game implements Runnable{
 		
 		for(int i = 0; i < level.length; i++) {
 			
-			int x = level[i].x;
-			int y = level[i].y;
+			
+			int x = (level[i].x == -1) ? ((i%Gmax)*16) : level[i].x;
+			int y = (level[i].y == -1) ? (int)(Math.floor(i/Gmax)*16) :level[i].y;
 			int texture = level[i].texture;
 			
 			graphics.drawImage(tilemap[texture], x, y, null);
