@@ -15,7 +15,7 @@ public class player {
 	static int pw = 16;
 	
 	static int dir = 0;
-	float jumpForce = 2;
+	float jumpForce = 5;
 	float playerSpeed = 1.5f;
 	int pidx;
 	int Deaths;
@@ -51,33 +51,33 @@ public class player {
 		int h = (util.BiI(Game.input.getKey(KeyEvent.VK_RIGHT))-util.BiI(Game.input.getKey(KeyEvent.VK_LEFT)));
 		int v = (util.BiI(Game.input.getKey(KeyEvent.VK_UP)));
 		sx += h*playerSpeed;
-		
-		
-		
-		
-		
+
 		if (h != 0)
 		dir = (h == 1) ? 0 : 1;
 		h = (h == 1) ? 1 : 0;
+		v = (v == 1) ? 1 : 0;
+		if(py+sy+ph > Game.Height) {
+			
+			Death();
+			return;
+		}
 		
 		if(Game.Current((int) ((px+sx+(pw*h))/16), (int) ((py+ph-0.1f)/16))) {
 			
 			sx = 0;
 			
 		} 
+		if(Game.Current((px+8)/16, (int) (py+sy+(ph))/16) && v == 1)
+		sy = -jumpForce;
 		px += Math.round(sx);
-		if(Game.Current((px+8)/16, (int) (py+sy+ph)/16)) {
+		if(Game.Current((px+8)/16, (int) (py+sy+(ph*(1-v)))/16)) {
 			
 			py = (((int) (py+sy)/16))*16;
 			sy = 0;
-			sy = v*-jumpForce;
+			
 			py += sy;
 		}
-		if(py+sy+ph > Game.Height) {
-			
-			Death();
-			
-		}
+		
 		py += sy;
 		sx = sx*0.8f;
 		sy += Game.g;

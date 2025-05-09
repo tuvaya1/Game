@@ -1,9 +1,13 @@
 package Game;
 
 import java.awt.Color;
+import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
+
+import javax.print.attribute.standard.DialogTypeSelection;
 
 import Display.Display;
 import utils.*;
@@ -47,9 +51,11 @@ public class Game implements Runnable{
 	// Resource
 		BufferedImage BackGround;
 		
-		BufferedImage[] tilemap = new BufferedImage[38];
+		int tiles = 42;
+		BufferedImage[] tilemap = new BufferedImage[tiles];
 	//
 		private float time;
+		private float timet;
 	
 	public Game() {
 		player = new player();
@@ -60,7 +66,7 @@ public class Game implements Runnable{
 		Display.addInputListener(input);
 		BackGround = ResourceLoader.loadimage("102079.jpg");
 		
-		for (int i = 0; i < 38; i++) {
+		for (int i = 0; i < tiles; i++) {
 			String tmp = "tileset/1 (" + (String.valueOf(i)) +").png";
 			System.out.println(tmp);
 		tilemap[i] = ResourceLoader.loadimage(tmp);
@@ -86,7 +92,15 @@ public class Game implements Runnable{
 		running = true;
 		gameThread = new Thread(this);
 		gameThread.start();
-		
+		diologs.clearBuff();
+		diologs.add("эээ, Привет игрок!");
+		diologs.add("Добро пожаловать в мою первую игру!");
+		diologs.add("Я ещё пока начнающий разработчик");
+		diologs.add("и... В этой игре пока мало контента,");
+		diologs.add("но надеюсь что тебе будет интересно");
+		diologs.add("Так... Смотри, здесь тебе нужно просто дойти до вон той двери,");
+		diologs.add("вот ти штуки впереди это шипы, все понятно?");
+		diologs.start();
 	}
 	
 	public synchronized void stop() {
@@ -115,7 +129,7 @@ public class Game implements Runnable{
 		}
 		
 		player.playerUP();
-		
+		diologs.update();
 		
 	}
 	
@@ -168,6 +182,7 @@ public class Game implements Runnable{
 			
 		}
 		graphics.drawImage(player.draw(), player.px, player.py, null);
+		graphics.setColor(Color.black);
 		graphics.drawString(String.valueOf(player.px/16), 0, 10);
 		graphics.drawString(String.valueOf(player.py/16), 0, 20);
 		graphics.drawString(String.valueOf(player.sx), 0, 30);
@@ -175,7 +190,24 @@ public class Game implements Runnable{
 		graphics.drawString(String.valueOf(player.pidx), 0, 50);
 		graphics.drawString(String.valueOf(player.Deaths), 0, Height-10);
 		graphics.drawString(String.valueOf(player.lvlDeaths), 0, Height);
+		
+		
+		FontMetrics fm = graphics.getFontMetrics();
+		int x = (Width - (int) fm.stringWidth(diologs.Nowtext)) / 2;
+		graphics.drawString(String.valueOf(diologs.Nowtext), x, Height-30);
+		graphics.setColor(Color.white);
+		graphics.drawString(String.valueOf(diologs.Nowtext), x-1, Height-31);
 		time += 0.5;
+		if (timet == 1000) {
+			diologs.clearBuff();
+			diologs.add("м...");
+			diologs.add("Управление на стрелочки");
+			diologs.start();
+		}
+		if (player.pidx == 648) {
+			timet += 0.5;
+			System.out.println(timet);
+		}
 		Display.swapBuffers();
 	}
 	
