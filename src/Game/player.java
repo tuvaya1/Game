@@ -18,6 +18,9 @@ public class player {
 	float jumpForce = 2;
 	float playerSpeed = 1.5f;
 	int pidx;
+	int Deaths;
+	int lvlDeaths;
+	
 	
 	static float frame;
 	
@@ -30,6 +33,7 @@ public class player {
 		
 		player = ResourceLoader.loadimage("PlayerSpriteSheet.png");
 		frame = 0;
+		Deaths = 0;
 		
 	}
 	
@@ -69,11 +73,27 @@ public class player {
 			sy = v*-jumpForce;
 			py += sy;
 		}
+		if(py+sy+ph > Game.Height) {
+			
+			Death();
+			
+		}
 		py += sy;
 		sx = sx*0.8f;
 		sy += Game.g;
 		
 		pidx = ((px+8)/16)+(py/16)*Game.Gmax;
 	}
+	
+	void Death() {
+		
+		px = Game.level[880].x;
+		py = Game.level[880].y;
+		Deaths++;
+		lvlDeaths++;
+		
+		
+	}	
+	
 	
 }

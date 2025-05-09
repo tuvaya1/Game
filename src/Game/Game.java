@@ -16,7 +16,7 @@ public class Game implements Runnable{
 	public static final int     Width          = 640;
 	public static final int     Height         = 352;
 	public static final String  Title          = "";
-	public static final int     _clearColor    = 0xFFFFFFFF;
+	public static final int     _clearColor    = 0xFF000000;
 	public static final int      numBuffers    = 3;
 	
 	public static final float   updateRate     = 60.0f;
@@ -47,8 +47,9 @@ public class Game implements Runnable{
 	// Resource
 		BufferedImage BackGround;
 		
-		BufferedImage[] tilemap = new BufferedImage[13];
+		BufferedImage[] tilemap = new BufferedImage[38];
 	//
+		private float time;
 	
 	public Game() {
 		player = new player();
@@ -59,20 +60,20 @@ public class Game implements Runnable{
 		Display.addInputListener(input);
 		BackGround = ResourceLoader.loadimage("102079.jpg");
 		
-		for (int i = 0; i < 13; i++) {
+		for (int i = 0; i < 38; i++) {
 			String tmp = "tileset/1 (" + (String.valueOf(i)) +").png";
 			System.out.println(tmp);
 		tilemap[i] = ResourceLoader.loadimage(tmp);
 		}
 		
 		level = maps.map1;
-		for (int i = 0; i < 13; i++) {
+		/*for (int i = 0; i < 38; i++) {
 			
 			int x = i%Gmax;
 			int y = i/Gmax;
 			level[i] = new block(x*16,y*16,false,i,null);
 			
-		}
+		}*/
 		player.px = level[880].x;
 		player.py = level[880].y;
 	}
@@ -130,12 +131,25 @@ public class Game implements Runnable{
 	
 	private void render() {
 		Display.clear();
+		int sx = 10;
+		float st = 0.5f;
+		graphics.setColor(new Color(0x1B0A1C));
+		for (int i = 0; i < Width; i += Width/sx) {
+			graphics.drawLine(0, (int)(i+(time*st)%(Width/sx)+50), Width, (int)(i+(time*st)%(Width/sx)+50));
+			graphics.drawLine((int)(i+(time*st)%(Width/sx))+60, 0, (int)(i+(time*st)%(Width/sx))+60, Height);
+		}
 		
-		double sx = (double)Width / BackGround.getWidth();
+		graphics.setColor(new Color(0x362134));
+		for (int i = 0; i < Width; i += Width/sx) {
+			graphics.drawLine(0, (int)(i+time%(Width/sx)), Width, (int)(i+time%(Width/sx)));
+			graphics.drawLine((int)(i+time%(Width/sx)), 0, (int)(i+time%(Width/sx)), Height);
+		}
+		
+		/*double sx = (double)Width / BackGround.getWidth();
 		double sy = (double)Height / BackGround.getHeight();
 		graphics.scale(sx, sy);
 		graphics.drawImage(BackGround,0,0,null);
-		graphics.scale(1/sx, 1/sy);
+		graphics.scale(1/sx, 1/sy);*/
 		
 		
 		
@@ -159,6 +173,9 @@ public class Game implements Runnable{
 		graphics.drawString(String.valueOf(player.sx), 0, 30);
 		graphics.drawString(String.valueOf(player.sy), 0, 40);
 		graphics.drawString(String.valueOf(player.pidx), 0, 50);
+		graphics.drawString(String.valueOf(player.Deaths), 0, Height-10);
+		graphics.drawString(String.valueOf(player.lvlDeaths), 0, Height);
+		time += 0.5;
 		Display.swapBuffers();
 	}
 	
