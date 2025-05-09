@@ -33,22 +33,23 @@ public class Game implements Runnable{
 	
 	
 	// Game constants
-		float g = 1;
-		float jumpForce = 2;
+		float g = 0.1f;
+		float jumpForce = 8;
 		float playerSpeed = 1.5f;
 		
 		
 	// Game
-		int px;
-		int py;
+		static int Gmax = 40;
+		static int Gmay = 22;
+		static block[] level;
+		static int px;
+		static int py;
 		int ph = 32;
 		int pw;
 		float sx;
 		float sy;
-		int Gmax = Width/16;
-		int Gmay = Height/16;
-		block[] level;
 		
+		static int idx;
 		
 	// Resource
 		BufferedImage BackGround;
@@ -77,6 +78,8 @@ public class Game implements Runnable{
 			
 		}*/
 		level = maps.map1;
+		px = level[880].x;
+		py = level[880].y;
 	}
 	
 	public synchronized void start() {
@@ -109,9 +112,10 @@ public class Game implements Runnable{
 	
 	private void update() {
 		
-		for(int i = 0; i < level.length;i++) {
-			if (level[i].action != null)
-			level[i].action.run();
+		for(idx = 0; idx < level.length;idx++) {
+			if (level[idx].action != null) {
+			//level[idx].action.run();
+			}
 		}
 		
 		playerUP();
@@ -122,23 +126,32 @@ public class Game implements Runnable{
 	private void playerUP() {
 		
 		sx += (util.BiI(input.getKey(KeyEvent.VK_RIGHT))-util.BiI(input.getKey(KeyEvent.VK_LEFT)))*playerSpeed;
-		sy -= (util.BiI(input.getKey(KeyEvent.VK_UP))-util.BiI(input.getKey(KeyEvent.VK_DOWN)))*playerSpeed;
 		
-		sy += g;
+		
+		
 		
 		px += Math.round(sx);
-		py += Math.round(sy);
+		py += sy;
 		
-		if(py+ph > Height) {
+		if(Current(px/16, (int) (py+sy+ph)/16)) {
 			
-			py = Height-ph;
+			py = (((int) (py+sy)/16))*16;
 			sy = 0;
-			
+			sy = (util.BiI(input.getKey(KeyEvent.VK_UP)))*-playerSpeed;
+			py += sy;
 		}
 		
 		sx = sx*0.8f;
+		sy += g;
+	}
+	
+	public boolean Current(int px, int py) {
+		
+		return level[(py*Gmax)+px].collision;
 		
 	}
+	
+	
 	
 	private void render() {
 		Display.clear();
@@ -151,9 +164,9 @@ public class Game implements Runnable{
 		
 		
 		
-		graphics.drawString(String.valueOf(Math.round(this.sx)), 0, 10);
 		
-		for(int i = 0; i < level.length; i++) {
+		
+		for(int i = 0; i < Gmax*Gmay; i++) {
 			
 			
 			int x = (level[i].x == -1) ? ((i%Gmax)*16) : level[i].x;
@@ -166,6 +179,10 @@ public class Game implements Runnable{
 			
 		}
 		graphics.drawImage(player, px, py, null);
+		graphics.drawString(String.valueOf(px/16), 0, 10);
+		graphics.drawString(String.valueOf(py/16), 0, 20);
+		graphics.drawString(String.valueOf(this.sx), 0, 30);
+		graphics.drawString(String.valueOf(this.sy), 0, 40);
 		Display.swapBuffers();
 	}
 	
