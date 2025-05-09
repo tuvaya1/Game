@@ -7,6 +7,7 @@ public class block {
 	boolean collision;
 	int texture;
 	Runnable action;
+	int idx;
 	
 	public block(int x, int y, boolean collision, int texture, Runnable r) {
 		

@@ -10,20 +10,23 @@ public class maps {
 		@Override
 		public void run() {
 			
-			if(Game.idx == Game.px+(Game.py*Game.Gmax))
+			if(Game.idx == Game.player.pidx) {
 			Game.level = map2;
-			
+			Game.player.px = Game.level[880].x;
+			Game.player.py = Game.level[880].y;
+			}
 		}
 		
 	});
-	static block s = new block(-1,-1,false, 5,new Runnable() {
+	static block s = new block(-1,-1,false, 11,new Runnable() {
 
 		@Override
 		public void run() {
 			
-			if(Game.idx == Game.px+(Game.py*Game.Gmax))
-			Game.px = Game.level[880].x;
-			Game.py = Game.level[880].y;
+			if(Game.idx == Game.player.pidx) {
+			Game.player.px = Game.level[880].x;
+			Game.player.py = Game.level[880].y;
+			}
 			
 		}
 		
@@ -51,7 +54,7 @@ public class maps {
 			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e, e,e,e,e,e, e,e,e,e,e, e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
 			
 			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e, e,e,e,e,e, e,e,e,e,e, e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
-			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e, e,s,s,s,s, s,s,s,s,e, e,e,e,e,e, e,e,e,D,e, e,e,e,w,w,
+			w,w,e,e,e, e,e,w,w,w, w,w,e,e,e, e,s,s,s,s, s,s,s,s,e, e,e,e,e,e, e,e,e,D,e, e,e,e,w,w,
 			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
 			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
 			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
@@ -90,7 +93,7 @@ public class maps {
 			
 			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, e,e,e,e,e, e,e,e,e,e, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
 			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, e,e,e,e,e, e,e,e,e,e, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
-			
+			tech
 			
 			
 	};

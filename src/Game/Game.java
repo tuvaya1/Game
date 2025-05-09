@@ -28,58 +28,53 @@ public class Game implements Runnable{
 	private boolean             running;
 	private Thread              gameThread;
 	private Graphics2D 			graphics;
-	private Input               input;
+	static Input               input;
 	
 	
 	
 	// Game constants
-		float g = 0.1f;
-		float jumpForce = 8;
-		float playerSpeed = 1.5f;
+		static float g = 0.2f;
+		
 		
 		
 	// Game
 		static int Gmax = 40;
 		static int Gmay = 22;
+		static player player;
 		static block[] level;
-		static int px;
-		static int py;
-		int ph = 32;
-		int pw;
-		float sx;
-		float sy;
-		
 		static int idx;
 		
 	// Resource
 		BufferedImage BackGround;
-		BufferedImage player;
-		BufferedImage[] tilemap = new BufferedImage[11];
+		
+		BufferedImage[] tilemap = new BufferedImage[13];
 	//
 	
 	public Game() {
+		player = new player();
 		running = false;
 		Display.create(Width, Height, Title, _clearColor, numBuffers);
 		graphics = Display.getGraphics();
 		input = new Input();
 		Display.addInputListener(input);
 		BackGround = ResourceLoader.loadimage("102079.jpg");
-		player = ResourceLoader.loadimage("tmp1.png");
-		for (int i = 0; i < 10; i++) {
+		
+		for (int i = 0; i < 13; i++) {
 			String tmp = "tileset/1 (" + (String.valueOf(i)) +").png";
 			System.out.println(tmp);
 		tilemap[i] = ResourceLoader.loadimage(tmp);
 		}
-		/*for (int i = 0; i < level.length; i++) {
+		
+		level = maps.map1;
+		for (int i = 0; i < 13; i++) {
 			
 			int x = i%Gmax;
 			int y = i/Gmax;
-			level[i] = new block(x*16,y*16,false,(int) (Math.random()*11),null);
+			level[i] = new block(x*16,y*16,false,i,null);
 			
-		}*/
-		level = maps.map1;
-		px = level[880].x;
-		py = level[880].y;
+		}
+		player.px = level[880].x;
+		player.py = level[880].y;
 	}
 	
 	public synchronized void start() {
@@ -112,40 +107,20 @@ public class Game implements Runnable{
 	
 	private void update() {
 		
-		for(idx = 0; idx < level.length;idx++) {
+		for(idx = 0; idx < Gmax*Gmay;idx++) {
 			if (level[idx].action != null) {
-			//level[idx].action.run();
+			level[idx].action.run();
 			}
 		}
 		
-		playerUP();
+		player.playerUP();
 		
 		
 	}
 	
-	private void playerUP() {
-		
-		sx += (util.BiI(input.getKey(KeyEvent.VK_RIGHT))-util.BiI(input.getKey(KeyEvent.VK_LEFT)))*playerSpeed;
-		
-		
-		
-		
-		px += Math.round(sx);
-		py += sy;
-		
-		if(Current(px/16, (int) (py+sy+ph)/16)) {
-			
-			py = (((int) (py+sy)/16))*16;
-			sy = 0;
-			sy = (util.BiI(input.getKey(KeyEvent.VK_UP)))*-playerSpeed;
-			py += sy;
-		}
-		
-		sx = sx*0.8f;
-		sy += g;
-	}
 	
-	public boolean Current(int px, int py) {
+	
+	public static boolean Current(int px, int py) {
 		
 		return level[(py*Gmax)+px].collision;
 		
@@ -178,11 +153,12 @@ public class Game implements Runnable{
 				
 			
 		}
-		graphics.drawImage(player, px, py, null);
-		graphics.drawString(String.valueOf(px/16), 0, 10);
-		graphics.drawString(String.valueOf(py/16), 0, 20);
-		graphics.drawString(String.valueOf(this.sx), 0, 30);
-		graphics.drawString(String.valueOf(this.sy), 0, 40);
+		graphics.drawImage(player.draw(), player.px, player.py, null);
+		graphics.drawString(String.valueOf(player.px/16), 0, 10);
+		graphics.drawString(String.valueOf(player.py/16), 0, 20);
+		graphics.drawString(String.valueOf(player.sx), 0, 30);
+		graphics.drawString(String.valueOf(player.sy), 0, 40);
+		graphics.drawString(String.valueOf(player.pidx), 0, 50);
 		Display.swapBuffers();
 	}
 	
