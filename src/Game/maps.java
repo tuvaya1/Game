@@ -107,6 +107,8 @@ public class maps {
 				Game.loadMap(map2);
 			if(Game.levelidx == 2)
 				Game.loadMap(map3);
+			if(Game.levelidx == 3)
+				Game.loadMap(map4);
 			Game.player.px = Game.level[880].x;
 			Game.player.py = Game.level[880].y;
 			Game.player.lvlDeaths = 0;
@@ -200,6 +202,12 @@ public class maps {
 			
 				
 				}
+				if(player.lvlDeaths == 5) {
+					nextLvl();
+					diologs.add("Ладно, ладно, этот уровень будет наного лучше.");
+					diologs.add("Смотри.");
+				}
+				
 			}
 			diologs.start();
 			}
