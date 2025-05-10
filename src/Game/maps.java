@@ -3,11 +3,13 @@ package Game;
 import java.io.File;
 import java.io.FileNotFoundException;
 
+import Display.Display;
+
 public class maps {
 	
 	static block tech = new block(128,258,true, 0,null);
 	static block tech2 = new block(272,304,true, 0,null);
-	static block tech3 = new block(256,240,true, 0,null);
+	static block tech3 = new block(128,240,true, 0,null);
 	static block w = new block(-1,-1,true, 19,null);
 	static block d = new block(-1,-1,true, 24,null);
 	static block u = new block(-1,-1,true, 14,null);
@@ -21,7 +23,8 @@ public class maps {
 	static block ur = new block(-1,-1,true, 30,null);
 	static block dl = new block(-1,-1,true, 36,null);
 	static block ul = new block(-1,-1,true, 31,null);
-	
+	static block rr = new block(-1,-1,true, 21,null);
+	static block t = new block(-1,-1,true, 16,null);
 	static block e = new block(-1,-1,false, 0,null);
 	static block D = new block(-1,-1,false, 42,new Runnable() {
 
@@ -48,7 +51,53 @@ public class maps {
 		}
 		
 	});
-	
+	static block Do = new block(-1,-1,false, 42,new Runnable() {
+
+		private int tmp = 0;
+
+		@Override
+		public void run() {
+			
+			
+			if(Game.player.pidx == 272) {
+				
+				if(tmp == 0) {
+				diologs.clearBuff();
+				diologs.add("Стоп, ты не можешь добрыгнуть?");
+				diologs.add("Мдээ... кажешься я немного просчитался...");
+				diologs.add("Попробуем-ка вот так!");
+				diologs.add("");
+
+				diologs.add("Попробуй теперь.");
+				diologs.start();
+				tmp = 1;	
+				}
+				
+				
+			}
+			if(tmp == 1) {
+				if(Game.level[Game.idx].x > 300) {
+					Game.level[Game.idx].x -= 1;
+				}else if(Game.level[Game.idx].y < 300) {
+					Game.level[Game.idx].y += 1;
+				}else {
+					tmp = 2;
+				}
+				
+			}
+			if(tmp == 2) {
+				if(Game.level[Game.idx].x < 384) {
+					Game.level[Game.idx].x += 1;
+				}else if(Game.level[Game.idx].y > 176) {
+					Game.level[Game.idx].y -= 1;
+				}else {
+					tmp = 3;
+				}
+			}
+			nextLvl();
+		}
+		
+	});
 	private static void nextLvl() {
 		if(!Game.player.controls) return;
 		int idx = (Game.level[Game.idx].x/16)+((Game.level[Game.idx].y/16)*Game.Gmax);
@@ -119,6 +168,35 @@ public class maps {
 				Game.loadMap(map1_2);
 				diologs.add("хорошо, я понял тебя...");
 				diologs.add("Никаких шипов и выход будет идти к тебе автоматически!");
+			
+				
+				}
+			}
+			if(Game.levelidx == 2) {
+				if(player.lvlDeaths == 1) {
+				
+				diologs.add("Попробуй ещё раз");
+				
+				}
+				if(player.lvlDeaths == 2) {
+				
+				diologs.add("ладно, видимо я поставил слишком много шипов.");
+				diologs.add("может мне убрать парочку?.");
+
+				
+				}
+				if(player.lvlDeaths == 3) {
+				Game.loadMap(map2_1);
+				diologs.add("Окей, хорошо.");
+				diologs.add("Теперь не должно быть проблем.");
+			
+				
+				}
+				if(player.lvlDeaths == 4) {
+				
+				diologs.add("По твоему это смешно?");
+				diologs.add("Ты делаешь это специально?");
+				diologs.add("Ты должен просто дойти до двери, это так сложно?");
 			
 				
 				}
@@ -264,6 +342,33 @@ public class maps {
 			
 			
 	};
+	static block[] map2_1 = {
+			w,w,w,w,w,  w,w,w,w,w, w,w,w,w,w, w, w, w, w, w,    w,w,w,w, w,   w, w, w, w, w,     w,w,w,w,w, w,w,w,w,w,
+			w,dr,d,d,d, d,d,d,d,d, d,d,d,d,d, d, d, d, d, d,    d,d,d,d, d,   d, d, d, d, d,     d,d,d,d,d, d,d,d,dl,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,e, e,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,e, e,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,e, e,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,                                                                                                    
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,e, e,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,e, e,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,e, e,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,e, e,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,e, e,   e, e, e, D, e,     e,e,e,e,e, e,e,e,l,w,                                                                                                    
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,e, lu,  u, u, u, ru,e,     e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,e, ld,  d, d, d, rd,e,     e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,e, ds,  ds,ds,ds,ds,e,     e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,e, e,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, lu,u, u, u, ru,   e,e,e,e, e,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,                                                                                      
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, ld,d, d, d, rd,   e,e,e,e, e,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, ds,ds,ds,ds,ds,   e,e,e,e, e,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,lu,ru,  e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,l, r,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,l, r,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,                                                                                   
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, lu,u, u, u, u,    u,u,u,ul,r,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, l, w, w, w, w,    w,w,w,w, r,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
+			tech2
+			
+			
+	};
 	static block[] map2 = {
 			w,w,w,w,w,  w,w,w,w,w, w,w,w,w,w, w, w, w, w, w,    w,w,w,w,  w,   w, w, w, w, w,     w,w,w,w,w, w,w,w,w,w,
 			w,dr,d,d,d, d,d,d,d,d, d,d,d,d,d, d, d, d, d, d,    d,d,d,d,  d,   d, d, d, d, d,     d,d,d,d,d, d,d,d,dl,w,
@@ -291,31 +396,30 @@ public class maps {
 			
 			
 	};
-	
 	static block[] map3 = {
-			w,w,w,w,w,      w,w,w,w,w,      w,w,w,w,w,        w,w,w,w,w,          w,w,w,w,w,       w,w,w,w,w,      w,w,w,w,w,      w,w,w,w,w,
-			w,dr,d,d,d,     d,d,d,d,d,      d,d,d,d,d,        d,d,d,d,d,          d,d,d,d,d,       d,d,d,d,d,      d,d,d,d,d,      d,d,d,dl,w,
-			w,r,ds,ds,ds,   ds,ds,ds,ds,ds, ds,ds,ds,ds,ds,   ds,ds,ds,ds,ds,     ds,ds,ds,ds,ds,  ds,ds,ds,ds,ds, ds,ds,ds,ds,ds, ds,ds,ds,l,w,
-			w,r,rs,e,e,     e,e,e,e,e,      e,e,e,e,e,        e,e,e,e,e,          e,e,e,e,e,       e,e,e,e,e,      e,e,e,e,e,      e,e,ls,l,w,
-			w,r,rs,e,e,     e,e,e,e,e,      e,e,e,e,e,        e,e,e,e,e,          e,e,e,e,e,       e,e,e,e,e,      e,e,e,e,e,      e,e,ls,l,w,
+			w,w,w,w,w,         w,w,w,w,w,          w,w,w,w,w,        w,w,w,w,w,      w,w,w,w,w,       w,w,w,w,w,      w,w,w,w,w,        w,w,w,w,w,
+			w,dr,d,d,d,        d,d,d,d,d,          d,d,d,d,d,        d,d,d,d,d,      d,d,d,d,d,       d,d,d,d,d,      d,d,d,d,d,        d,d,d,dl,w,
+			w,r,ds,ds,ds,      ds,ds,ds,ds,ds,     ds,ds,ds,ds,ds,   ds,ds,ds,ds,ds, ds,ds,ds,ds,ds,  ds,ds,ds,ds,ds, ds,ds,ds,ds,ds,   ds,ds,ds,l,w,
+			w,r,rs,e,e,        e,e,e,e,e,          e,e,e,e,e,        e,e,e,e,e,      e,e,e,e,e,       e,e,e,e,e,      e,e,e,e,e,        e,e,ls,l,w,
+			w,r,rs,e,e,        lu,ru,e,e,e,        e,e,e,e,e,        e,e,e,e,e,      e,e,e,e,e,       e,e,e,e,e,      e,e,e,e,e,        e,e,ls,l,w,
 			                                                                                                                               
-			w,r,rs,e,e,     e,e,e,e,e,      e,e,e,e,e,        e,e,e,e,e,          e,e,e,e,e,       e,e,e,e,e,      e,e,e,e,e,      e,e,ls,l,w,
-			w,r,rs,e,e,     e,e,e,e,e,      e,e,e,e,e,        e,e,e,e,e,          e,e,e,e,e,       e,e,e,e,e,      e,e,e,e,e,      e,e,ls,l,w,
-			w,r,rs,e,e,     e,e,e,e,e,      e,e,e,e,e,        e,e,e,e,e,          e,e,e,e,e,       e,e,e,e,e,      e,e,e,e,e,      e,e,ls,l,w,
-			w,r,rs,e,e,     e,e,e,e,e,      e,e,e,e,e,        e,e,e,e,e,          e,e,e,e,e,       e,e,e,e,e,      e,e,e,e,e,      e,e,ls,l,w,
-			w,r,rs,e,e,     e,e,e,e,e,      e,e,e,e,e,        e,e,e,e,e,          e,e,e,e,e,       u,u,ru,e,e,      e,e,e,e,e,      e,e,ls,l,w,
-			                                                                                                                               
-			w,r,rs,e,e,     e,e,e,e,e,      e,e,e,e,e,        e,e,e,e,e,          e,e,e,e,e,       d,dl,r,e,e,      e,e,e,e,e,      e,e,ls,l,w,
-			w,r,rs,e,e,     e,e,e,e,e,      e,e,e,e,e,        e,e,e,e,e,          e,e,e,e,e,       e,l,r,e,e,      e,e,e,e,e,      e,e,ls,l,w,
-			w,r,rs,e,e,     e,e,e,e,e,      e,e,e,e,e,        e,e,e,e,e,          e,e,e,e,e,       e,l,r,e,e,      e,e,e,e,e,      e,e,ls,l,w,
-			w,r,rs,e,e,     e,e,e,e,e,      e,e,e,e,e,        e,e,e,e,e,          lu,ru,e,e,e,     e,l,r,e,e,      e,e,e,e,e,      e,e,ls,l,w,
-			w,r,rs,e,e,     e,e,e,e,e,      e,e,e,e,e,        e,e,e,e,e,          l,r,e,e,e,       e,l,r,e,e,      e,e,e,e,e,      e,e,ls,l,w,
-			                                                                                                                               
-			w,r,rs,e,e,     e,e,e,e,e,      e,e,e,e,e,        e,e,e,e,e,          l,r,e,e,e,       e,l,r,e,e,      e,e,e,e,e,      e,e,ls,l,w,
-			w,r,rs,e,e,     e,e,e,e,e,      e,e,e,e,e,        lu,u,u,u,u,         ul,r,u,u,u,      u,ul,r,e,e,      e,e,e,e,e,      e,e,ls,l,w,
-			w,r,rs,e,e,     e,e,e,e,e,      e,e,e,e,e,        l,dr,d,d,d,         d,rd,d,d,d,      d,d,rd,e,e,      e,e,e,e,e,      e,e,ls,l,w,
-			w,r,rs,e,e,     e,e,e,e,e,      e,e,e,e,e,        l,r,e,e,e,          e,e,e,e,e,       e,e,e,e,e,      e,e,e,e,e,      e,e,ls,l,w,
-			w,r,us,us,us,   us,us,us,us,us, us,us,us,us,us,   l,r,us,us,us,       us,us,us,us,us,  us,us,us,us,us, us,us,us,us,us, us,us,us,l,w,
+			w,r,rs,e,e,        l,r,e,e,e,          e,e,e,e,e,       e,e,e,e,e,       e,e,e,e,e,       e,e,e,e,e,      e,e,e,e,Do,        e,e,ls,l,w,  
+			w,r,rs,e,e,        l,r,e,e,e,          e,e,e,e,lu,      u,u,u,u,u,       ru,e,e,e,e,      e,e,e,e,e,      e,e,e,lu,ru,      e,e,ls,l,w,  
+			w,r,rs,e,e,        l,r,e,e,e,          e,e,e,e,ld,      d,d,d,d,dl,      r,e,e,e,e,       e,e,e,e,e,      e,e,e,l,r,        e,e,ls,l,w,  
+			w,r,rs,e,e,        l,r,e,e,e,          e,e,e,e,ds,      ds,ds,ds,ds,l,   r,e,e,e,e,       e,e,e,e,e,      e,e,e,l,r,        e,e,ls,l,w,  
+			w,r,rs,e,e,        ld,d,t,t,rr,        e,e,e,e,lu,      u,u,ru,ls,l,     r,e,e,e,e,       e,e,e,e,e,      e,e,e,l,r,        e,e,ls,l,w, 
+			                                                                                                                                       
+			w,r,rs,e,e,        ds,ds,ds,ds,ds,     e,e,e,e,ld,      d,dl,r,ls,l,     r,e,e,e,e,       e,e,e,e,e,      e,e,e,l,r,       e,e,ls,l,w, 
+			w,r,rs,e,e,        e,e,e,e,e,          e,e,e,e,ds,      ds,l,r,ls,l,     r,e,e,e,e,       e,e,e,e,e,      e,e,e,l,r,       e,e,ls,l,w,  
+			w,r,rs,e,e,        e,e,e,e,e,          e,e,e,e,e,       e,l,r,ls,l,      ur,u,u,u,u,      u,u,u,u,u,      u,u,u,ul,r,      e,e,ls,l,w,  
+			w,r,rs,e,e,        e,e,e,e,e,          e,e,e,e,e,       e,l,r,ls,ld,     d,d,d,d,d,       d,d,d,d,d,      d,d,d,d,rd,      e,e,ls,l,w,  
+			w,r,rs,e,e,        e,e,e,e,e,          lu,ru,e,e,e,     e,l,r,e,e,       e,e,e,e,e,       e,e,e,e,e,      e,e,e,e,e,       e,e,ls,l,w,  
+			                                                                                                                                        
+			w,r,rs,e,e,        e,e,e,e,e,          l,r,us,us,us,    us,l,r,e,e,      e,e,e,e,e,       e,e,e,e,e,      e,e,e,e,e,       e,e,ls,l,w,  
+			w,r,rs,e,e,        lu,u,u,u,u,         ul,r,u,u,u,      u,ul,r,e,e,      e,e,e,e,e,       e,e,e,e,e,      e,e,e,e,e,       e,e,ls,l,w, 
+			w,r,rs,e,e,        l,dr,d,d,d,         d,rd,d,d,d,      d,d,rd,e,e,      e,e,e,e,e,       e,e,e,e,e,      e,e,e,e,e,       e,e,ls,l,w, 
+			w,r,rs,e,e,        l,r,ds,ds,ds,       ds,ds,ds,ds,ds,  ds,ds,ds,e,e,    e,e,e,e,e,       e,e,e,e,e,      e,e,e,e,e,       e,e,ls,l,w,  
+			w,r,us,us,us,      l,r,us,us,us,       us,us,us,us,us,  us,us,us,us,us,  us,us,us,us,us,  us,us,us,us,us, us,us,us,us,us,   us,us,us,l,w,
 			                                                  
 			w,ur,u,u,u,     u,u,u,u,u,      u,u,u,u,u,        u,u,u,u,u,          u,u,u,u,u,       u,u,u,u,u,      u,u,u,u,u,      u,u,u,ul,w,
 			w,w,w,w,w,      w,w,w,w,w,      w,w,w,w,w,        w,w,w,w,w,          w,w,w,w,w,       w,w,w,w,w,      w,w,w,w,w,      w,w,w,w,w,

@@ -68,6 +68,7 @@ public class player {
 	}
 	
 	void playerUP() {
+		pidx = ((px+8)/16)+(py/16)*Game.Gmax;
 		if (!controls) { animation = 0; return;}
 		int h = 0;
 		int v = 0; 
@@ -123,7 +124,7 @@ public class player {
 		sx = sx*0.8f;
 		sy += Game.g;
 		
-		pidx = ((px+8)/16)+(py/16)*Game.Gmax;
+		
 	}
 	
 	void Death() {

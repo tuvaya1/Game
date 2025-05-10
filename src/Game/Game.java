@@ -110,6 +110,7 @@ public class Game implements Runnable{
 	
 	private void loading() {
 		
+		diologs.loading();
 		player.loading();
 		BackGround = ResourceLoader.loadimage("102079.jpg");
 		for (int i = 0; i < tiles; i++) {
@@ -127,7 +128,7 @@ public class Game implements Runnable{
 		File f = new File("resource/Music/msc_level.wav");
 		music = new Sound(f);
 		Display.swapBuffers();
-		loadMap(maps.map3);
+		loadMap(maps.map1);
 		levelidx = 1;
 		/*for (int i = 0; i < 38; i++) {
 			
