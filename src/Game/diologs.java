@@ -8,6 +8,7 @@ import utils.Sound;
 
 public class diologs {
 	
+	static Sound pic;
 	static String Nowtext = "";
 	static ArrayList<String> textBuffer = new ArrayList<>();
 	static ArrayList<Integer> soundB = new ArrayList<>();
@@ -19,13 +20,13 @@ public class diologs {
 	private static String tmptext;
 	private int countofreplics = 1;
 	
-	private void loading() {
+	static void loading() {
 		File f;
-		for (int i = 0; i < countofreplics ; i++) {
-			f = new File("Voice/1 (" + String.valueOf(i) + ").wav");
-			soundBuffer.add(new Sound(f));
+		
+			f = new File("resource/Sounds/sfx_dialogue.wav");
+			pic = new Sound(f);
 			
-		}
+		
 		
 	}
 	
@@ -76,7 +77,8 @@ public class diologs {
 		if(tmptext != null && c > 0 && c < tmptext.length()+1)
 		Nowtext = tmptext.substring(0, (int) c);
 		c += 0.5f;
-				System.out.println(c);
+		if(tmptext != null && (c*10)%10 == 0 && c > 0 && c < tmptext.length()+1 && !tmptext.equals("")) pic.play();
+		System.out.println((c*10)%10);
 		time ++;
 		
 		
