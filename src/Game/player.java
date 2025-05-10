@@ -4,6 +4,7 @@ import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
+import Display.Display;
 import utils.ResourceLoader;
 import utils.util;
 
@@ -124,6 +125,12 @@ public class player {
 		lvlDeaths++;
 		sx = 0;
 		sy = 0;
+		
+	}
+
+	public void loading() {
+		
+		Display.swapBuffers();
 		
 	}	
 	

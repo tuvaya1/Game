@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
+import java.io.File;
 
 import javax.print.attribute.standard.DialogTypeSelection;
 
@@ -50,40 +51,35 @@ public class Game implements Runnable{
 		static int levelidx;
 		
 	// Resource
+		BufferedImage Loading;
 		BufferedImage BackGround;
 		
-		int tiles = 42;
+		int tiles = 43;
 		BufferedImage[] tilemap = new BufferedImage[tiles];
 	//
 		private float time;
 		private float timet;
+		private int loading;
+		private Sound music;
 	
 	public Game() {
+		Loading = ResourceLoader.loadimage("Loading.png");
 		player = new player();
 		running = false;
 		Display.create(Width, Height, Title, _clearColor, numBuffers);
 		graphics = Display.getGraphics();
+		System.out.println("!");
+		Display.clear();
+		graphics.drawImage(Loading,0,0,null);
+		Display.swapBuffers();
+		
+		System.out.println("!");
+		
+		
 		input = new Input();
 		Display.addInputListener(input);
-		BackGround = ResourceLoader.loadimage("102079.jpg");
 		
-		for (int i = 0; i < tiles; i++) {
-			String tmp = "tileset/1 (" + (String.valueOf(i)) +").png";
-			System.out.println(tmp);
-		tilemap[i] = ResourceLoader.loadimage(tmp);
-		}
 		
-		loadMap(maps.map1);
-		levelidx = 1;
-		/*for (int i = 0; i < 38; i++) {
-			
-			int x = i%Gmax;
-			int y = i/Gmax;
-			level[i] = new block(x*16,y*16,false,i,null);
-			
-		}*/
-		player.px = level[880].x;
-		player.py = level[880].y;
 	}
 	
 	public static void loadMap(block[] map) {
@@ -99,10 +95,52 @@ public class Game implements Runnable{
 		if (running)
 			return;
 		
+	
+		
 		running = true;
 		gameThread = new Thread(this);
+		
 		gameThread.start();
+		loading = 0;
+		
+		
+	}
+	
+	private void loading() {
+		
+		player.loading();
+		BackGround = ResourceLoader.loadimage("102079.jpg");
+		for (int i = 0; i < tiles; i++) {
+			String tmp = "tileset/1 (" + (String.valueOf(i)) +").png";
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			Display.swapBuffers();
+			System.out.println(tmp);
+		tilemap[i] = ResourceLoader.loadimage(tmp);
+		}
+		File f = new File("resource/Music/e.wav");
+		music = new Sound(f);
+		Display.swapBuffers();
+		loadMap(maps.map1);
+		levelidx = 1;
+		/*for (int i = 0; i < 38; i++) {
+			
+			int x = i%Gmax;
+			int y = i/Gmax;
+			level[i] = new block(x*16,y*16,false,i,null);
+			
+		}*/
+		player.px = level[880].x;
+		player.py = level[880].y;
+		loading = 1;
 		diologs.clearBuff();
+		diologs.add("");
+		diologs.add("");
+		diologs.add("");
 		diologs.add("эээ, Привет игрок!");
 		diologs.add("Добро пожаловать в мою первую игру!");
 		diologs.add("Я ещё пока начнающий разработчик");
@@ -111,6 +149,7 @@ public class Game implements Runnable{
 		diologs.add("Так... Смотри, здесь тебе нужно просто дойти до вон той двери,");
 		diologs.add("вот ти штуки впереди это шипы, все понятно?");
 		diologs.start();
+		music.play();
 	}
 	
 	public synchronized void stop() {
@@ -131,7 +170,13 @@ public class Game implements Runnable{
 	}
 	
 	private void update() {
-		
+		if(loading == 0) {
+			
+			loading();
+			
+			return;
+			
+		}
 		for(idx = 0; idx < Gmax*Gmay;idx++) {
 			if (level[idx].action != null) {
 			level[idx].action.run();
@@ -158,6 +203,14 @@ public class Game implements Runnable{
 	
 	private void render() {
 		Display.clear();
+		if(loading == 0) {
+			
+			graphics.drawImage(Loading,0,0,null);
+			
+			Display.swapBuffers();
+			return;
+			
+		}
 		int sx = 10;
 		float st = 0.5f;
 		graphics.setColor(new Color(0x1B0A1C));
@@ -237,6 +290,7 @@ public class Game implements Runnable{
 		
 		long lastTime = Time.get();
 		while(running) {
+			
 			long now = Time.get();
 			long elapsedTime = now - lastTime;
 			lastTime = now;

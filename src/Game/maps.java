@@ -22,7 +22,7 @@ public class maps {
 	static block ul = new block(-1,-1,true, 31,null);
 	
 	static block e = new block(-1,-1,false, 0,null);
-	static block D = new block(-1,-1,false, 4,new Runnable() {
+	static block D = new block(-1,-1,false, 42,new Runnable() {
 
 		@Override
 		public void run() {
@@ -31,7 +31,7 @@ public class maps {
 		}
 		
 	});
-	static block De = new block(-1,-1,false, 4,new Runnable() {
+	static block De = new block(-1,-1,false, 42,new Runnable() {
 
 		@Override
 		public void run() {
