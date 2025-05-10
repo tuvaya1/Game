@@ -60,13 +60,13 @@ public class player {
 	}
 	
 	void playerUP() {
-		
+		if (!controls) return;
 		int h = 0;
 		int v = 0; 
-		if (controls) {
+		
 			h = (util.BiI(Game.input.getKey(KeyEvent.VK_RIGHT))-util.BiI(Game.input.getKey(KeyEvent.VK_LEFT)));
 			v = (util.BiI(Game.input.getKey(KeyEvent.VK_UP)));
-		}
+		
 		sx += h*playerSpeed;
 		
 		

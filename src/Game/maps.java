@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 
 public class maps {
 	
-	static block tech = new block(128,128,true, 0,null);
+	static block tech = new block(128,258,true, 0,null);
 	static block tech2 = new block(272,304,true, 0,null);
 	static block w = new block(-1,-1,true, 19,null);
 	static block d = new block(-1,-1,true, 24,null);
@@ -37,7 +37,12 @@ public class maps {
 		public void run() {
 			if(!Game.player.controls) return;
 			Game.level[Game.idx].x += 5;
-			
+			if(Game.level[Game.idx].x > Game.player.px) {
+				Game.loadMap(map1_3);
+				diologs.clearBuff();
+				diologs.add("Знаешь что? вот тебе!");
+				diologs.start();
+			}
 			nextLvl();
 		}
 		
@@ -61,11 +66,13 @@ public class maps {
 				if(Game.player.Deaths < 3) {
 					diologs.add("Молодец, ты справился!");
 					diologs.add("Вот и новый уровень!");
-				}else {
+				}else if(Game.player.Deaths < 4) {
 					diologs.add("Фуух, наконец ты прошел.");
 					diologs.add("Видимо я немного перестарался.");
 					diologs.add("Постараюсь чтобы следующие уровни были полегче");
 					diologs.add("Надеюсь я не испортил тебе настроение...");
+				}else {
+					diologs.add("Наконец-то.");
 				}
 			}
 			diologs.start();
@@ -219,6 +226,38 @@ public class maps {
 			                                                                
 			w,w,w,w,w,  w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,     w,w,w,w,w,     w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
 			w,w,w,w,w,  w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,     w,w,w,w,w,     w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			tech
+			
+			
+			
+	};
+	static block[] map1_3 = {
+			w,w,w,w,w,  w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,     w,w,w,w,w,     w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,dr,d,d,d, d,d,d,d,d, d,d,d,d,d, d,d,d,d,d,     d,d,d,d,d,     d,d,d,d,d, d,d,d,d,d, d,d,d,dl,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,e,e,     e,e,e,e,e,     e,e,e,e,e, e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,e,e,     e,e,e,e,e,     e,e,e,e,e, e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,e,e,     e,e,e,e,e,     e,e,e,e,e, e,e,e,e,e, e,e,e,l,w,
+			                                                                                           
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,e,e,     e,e,e,e,e,     e,e,e,e,e, e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,e,e,     e,e,e,e,e,     e,e,e,e,e, e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,e,e,     e,e,e,e,e,     e,e,e,e,e, e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,e,e,     e,e,e,e,e,     e,e,e,e,e, e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,e,e,     e,e,e,e,e,     e,e,e,e,e, e,e,e,e,e, e,e,e,l,w,
+			                                                                                           
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,e,e,     e,e,e,e,e,     e,e,e,e,e, e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,e,e,     e,e,e,e,e,     e,e,e,e,e, e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,e,e,     e,e,e,e,e,     e,e,e,e,e, e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,e,e,     e,e,e,e,e,     e,e,e,e,e, e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,e,e,     e,e,e,e,e,     e,e,e,e,e, e,e,e,e,e, e,e,e,l,w,
+			                                                                                           
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,e,e,     e,e,e,e,e,     e,e,e,e,e, e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,e,e,     e,e,e,e,e,     e,e,e,e,e, e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,e,e,     e,e,e,e,e,     e,e,e,e,e, e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,e,e,     e,e,e,e,e,     e,e,e,e,e, e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,e,e,     e,e,e,e,e,     e,e,e,e,e, e,e,e,e,e, e,e,e,l,w,
+			                                                                
+			w,r,D,D,D,  D,D,D,D,D, D,D,D,D,D, D,D,D,D,D,     D,D,D,D,D,     D,D,D,D,D, D,D,D,D,D, D,D,D,l,w,
+			w,r,D,D,D,  D,D,D,D,D, D,D,D,D,D, D,D,D,D,D,     D,D,D,D,D,     D,D,D,D,D, D,D,D,D,D, D,D,D,l,w,
 			tech
 			
 			

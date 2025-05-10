@@ -112,12 +112,12 @@ public class Game implements Runnable{
 		BackGround = ResourceLoader.loadimage("102079.jpg");
 		for (int i = 0; i < tiles; i++) {
 			String tmp = "tileset/1 (" + (String.valueOf(i)) +").png";
-			try {
+			/*try {
 				Thread.sleep(100);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}*/
 			Display.swapBuffers();
 			System.out.println(tmp);
 		tilemap[i] = ResourceLoader.loadimage(tmp);
