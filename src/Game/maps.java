@@ -5,100 +5,26 @@ import java.io.FileNotFoundException;
 
 import Display.Display;
 
-public class maps {
+public class maps extends blocks {
 	
-	static block tech = new block(128,258,true, 0,null);
-	static block tech2 = new block(272,304,true, 0,null);
-	static block tech3 = new block(128,240,true, 0,null);
-	static block w = new block(-1,-1,true, 19,null);
-	static block d = new block(-1,-1,true, 24,null);
-	static block u = new block(-1,-1,true, 14,null);
-	static block r = new block(-1,-1,true, 20,null);
-	static block l = new block(-1,-1,true, 18,null);
-	static block rd = new block(-1,-1,true, 25,null);
-	static block ru = new block(-1,-1,true, 15,null);
-	static block ld = new block(-1,-1,true, 23,null);
-	static block lu = new block(-1,-1,true, 13,null);
-	static block dr = new block(-1,-1,true, 35,null);
-	static block ur = new block(-1,-1,true, 30,null);
-	static block dl = new block(-1,-1,true, 36,null);
-	static block ul = new block(-1,-1,true, 31,null);
-	static block rr = new block(-1,-1,true, 21,null);
-	static block t = new block(-1,-1,true, 16,null);
-	static block e = new block(-1,-1,false, 0,null);
-	static block D = new block(-1,-1,false, 42,new Runnable() {
-
-		@Override
-		public void run() {
+	
+	static void nextLvl(block[] map) {
+		if(!Game.player.controls) return;
+		int idx = (Game.level[Game.idx].x/16)+((Game.level[Game.idx].y/16)*Game.Gmax);
+		System.out.println(idx);
+		if(idx == Game.player.pidx) {
 			
-			nextLvl();
-		}
-		
-	});
-	static block De = new block(-1,-1,false, 42,new Runnable() {
-
-		@Override
-		public void run() {
-			if(!Game.player.controls) return;
-			Game.level[Game.idx].x += 5;
-			if(Game.level[Game.idx].x > Game.player.px) {
-				Game.loadMap(map1_3);
-				diologs.clearBuff();
-				diologs.add("Знаешь что? вот тебе!");
-				diologs.start();
-			}
-			nextLvl();
-		}
-		
-	});
-	static block Do = new block(-1,-1,false, 42,new Runnable() {
-
-		private int tmp = 0;
-
-		@Override
-		public void run() {
+				Game.loadMap(map);
 			
 			
-			if(Game.player.pidx == 272) {
-				
-				if(tmp == 0) {
-				diologs.clearBuff();
-				diologs.add("Стоп, ты не можешь добрыгнуть?");
-				diologs.add("Мдээ... кажешься я немного просчитался...");
-				diologs.add("Попробуем-ка вот так!");
-				diologs.add("");
-
-				diologs.add("Попробуй теперь.");
-				diologs.start();
-				tmp = 1;	
-				}
-				
-				
-			}
-			if(tmp == 1) {
-				if(Game.level[Game.idx].x > 300) {
-					Game.level[Game.idx].x -= 1;
-				}else if(Game.level[Game.idx].y < 300) {
-					Game.level[Game.idx].y += 1;
-				}else {
-					tmp = 2;
-				}
-				
-			}
-			if(tmp == 2) {
-				if(Game.level[Game.idx].x < 384) {
-					Game.level[Game.idx].x += 1;
-				}else if(Game.level[Game.idx].y > 176) {
-					Game.level[Game.idx].y -= 1;
-				}else {
-					tmp = 3;
-				}
-			}
-			nextLvl();
+			Game.player.px = Game.level[880].x;
+			Game.player.py = Game.level[880].y;
+			Game.player.lvlDeaths = 0;
+			
 		}
-		
-	});
-	private static void nextLvl() {
+	}
+	
+	static void nextLvl() {
 		if(!Game.player.controls) return;
 		int idx = (Game.level[Game.idx].x/16)+((Game.level[Game.idx].y/16)*Game.Gmax);
 		System.out.println(idx);
@@ -125,6 +51,19 @@ public class maps {
 					diologs.add("Надеюсь я не испортил тебе настроение...");
 				}else {
 					diologs.add("Наконец-то.");
+				}
+			}
+			if(Game.levelidx == 3) {
+				if(Game.player.Deaths < 2) {
+					diologs.add("Ого, ты снова смог!");
+					diologs.add("Кажеться все идет неплохо.");
+					diologs.add("Надеюсь тебе понравиться этот уровень, я очень старался.");
+				}else if(Game.player.Deaths == 2) {
+					diologs.add("Отлично, ты прошел...");
+					diologs.add("видимо мне нужно получше думать над дизайном уровня");
+				}else {
+					diologs.add("Ухх... наконец то...");
+					diologs.add("Извини меня, с этим уровнем точно проблем не будет");
 				}
 			}
 			diologs.start();
@@ -209,6 +148,42 @@ public class maps {
 				}
 				
 			}
+			if(Game.levelidx == 3) {
+				if(player.lvlDeaths == 1) {
+				
+				diologs.add("Попробуй ещё раз");
+				
+				}
+				if(player.lvlDeaths == 2) {
+				
+				diologs.add("ладно, видимо я поставил слишком много шипов.");
+				diologs.add("может мне убрать парочку?.");
+
+				
+				}
+				if(player.lvlDeaths == 3) {
+				Game.loadMap(map2_1);
+				diologs.add("Окей, хорошо.");
+				diologs.add("Теперь не должно быть проблем.");
+			
+				
+				}
+				if(player.lvlDeaths == 4) {
+				
+				diologs.add("По твоему это смешно?");
+				diologs.add("Ты делаешь это специально?");
+				diologs.add("Ты должен просто дойти до двери, это так сложно?");
+			
+				
+				}
+				if(player.lvlDeaths == 5) {
+					nextLvl();
+					diologs.add("Ладно, ладно, этот уровень будет наного лучше.");
+					diologs.add("Смотри.");
+				}
+				
+			}
+			
 			diologs.start();
 			}
 			
@@ -437,35 +412,71 @@ public class maps {
 
 	};
 	
+	
+	static block[] map3_1 = {
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,e, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,e, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,e, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			                                                                                                                               
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,t1, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,e, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,e, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,e, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,e, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			                                                                                                                                       
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,e, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,e, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,e, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,e, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,e, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			                                                                                                                                        
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,e, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,e, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,e, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,e, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,D, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			                                                  
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			tech3                 
+			
+			
+
+	};
+	
+	
 	static block[] map4 = {
-			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,   w,w,w,w,w,     w,w,w,w,w,  w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
-			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,   w,w,w,w,w,     w,w,w,w,w,  w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
-			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
-			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
-			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
-			                                                              
-			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
-			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
-			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
-			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
-			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
-			                                                              
-			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
-			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
-			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
-			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
-			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
-			                                                  
-			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
-			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
-			w,w,w,w,w, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, w,w,w,w,w,
-			w,w,w,w,w, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, w,w,w,w,w,
-			w,w,w,w,w, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, w,w,w,w,w,
-			                                                  
-			w,w,w,w,w, e,e,e,e,e, e,e,e,e,e,   w,w,w,w,w,     w,w,w,w,w,  e,e,e,e,e, e,e,e,e,e, w,w,w,w,w,
-			w,w,w,w,w, e,e,e,e,e, e,e,e,e,e,   w,w,w,w,w,     w,w,w,w,w,  e,e,e,e,e, e,e,e,e,e, w,w,w,w,w,
-			tech2
+			w,w,w,w,w,  w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,      w,w,w,w,w,      w,w,w,w,w,   w,w,w,w,w, w,w,w,w,w,
+			w,dr,d,d,d, d,d,d,d,d, d,d,d,d,d, d,d,d,d,d,      d,d,d,d,d,      d,d,d,d,d,   d,d,d,d,d, d,d,d,dl,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,e,e,      e,e,e,e,e,      e,e,e,e,e,   e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,e,e,      e,e,e,e,e,      e,e,e,e,e,   e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,e,e,      e,e,e,e,e,      e,e,e,e,e,   e,e,e,e,e, e,e,e,l,w,
+			                                                                                                
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,e,e,      e,e,e,e,e,      e,e,e,e,e,   e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,e,e,      e,e,e,e,e,      e,e,e,e,e,   e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,e,e,      e,e,e,e,e,      e,e,e,e,e,   e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,e,e,      e,e,e,e,e,      e,e,e,e,e,   e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,e,e,      e,e,e,e,e,      e,e,e,e,e,   e,e,e,e,e, e,e,e,l,w,
+			                                                                                             
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,e,e,      e,e,e,e,e,      e,e,e,e,e,   e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,e,e,      e,e,e,e,e,      e,e,e,e,e,   e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,e,e,      e,e,e,e,e,      e,e,e,e,e,   e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,e,e,      e,e,e,e,e,      e,e,e,e,e,   e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,e,e,      e,e,e,e,e,      e,e,e,e,e,   e,e,e,e,e, e,e,e,l,w,
+			
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,e,e,      e,e,e,e,e,      e,e,e,e,e,   e,e,e,e,e, e,e,e,l,w,                                                                                 
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,e,e,      e,e,e,e,e,      e,e,e,e,e,   e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,e,e,      e,e,e,e,e,      e,e,e,e,e,   e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,e,e,      e,e,e,e,e,      e,e,e,e,e,   e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,e,e,      e,e,e,e,e,      e,e,e,e,e,   e,e,e,e,e, e,e,e,l,w,
+			                                            
+			w,ur,u,u,u, u,u,u,u,u, u,u,u,u,u, u,u,u,u,u,      u,u,u,u,u,      u,u,u,u,u,   u,u,u,u,u, u,u,u,ul,w,
+			w,w,w,w,w,  w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,      w,w,w,w,w,      w,w,w,w,w,   w,w,w,w,w, w,w,w,w,w,
+			tech4
 			
 			
 	};
+	
 }

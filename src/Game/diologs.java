@@ -78,7 +78,7 @@ public class diologs {
 		Nowtext = tmptext.substring(0, (int) c);
 		c += 0.5f;
 		if(tmptext != null && (c*10)%10 == 0 && c > 0 && c < tmptext.length()+1 && !tmptext.equals("")) pic.play();
-		System.out.println((c*10)%10);
+		
 		time ++;
 		
 		

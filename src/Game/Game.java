@@ -54,7 +54,7 @@ public class Game implements Runnable{
 		BufferedImage Loading;
 		BufferedImage BackGround;
 		
-		int tiles = 43;
+		int tiles = 47;
 		BufferedImage[] tilemap = new BufferedImage[tiles];
 	//
 		private float time;
@@ -273,11 +273,11 @@ public class Game implements Runnable{
 		if(playervis)
 		graphics.drawImage(player.draw(), player.px, player.py, null);
 		graphics.setColor(Color.black);
-		graphics.drawString(String.valueOf(player.px/16), 0, 10);
+		/*graphics.drawString(String.valueOf(player.px/16), 0, 10);
 		graphics.drawString(String.valueOf(player.py/16), 0, 20);
 		graphics.drawString(String.valueOf(player.sx), 0, 30);
 		graphics.drawString(String.valueOf(player.sy), 0, 40);
-		graphics.drawString(String.valueOf(player.pidx), 0, 50);
+		graphics.drawString(String.valueOf(player.pidx), 0, 50);*/
 		graphics.drawString(String.valueOf(player.Deaths), 0, Height-10);
 		graphics.drawString(String.valueOf(player.lvlDeaths), 0, Height);
 		
