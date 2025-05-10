@@ -1,5 +1,7 @@
 package Game;
 
+import Game.mapss.mapss;
+
 public class blocks {
 	public static block tech = new block(128,258,true, 0,null);
 	public static block tech2 = new block(272,304,true, 0,null);
@@ -42,7 +44,7 @@ public class blocks {
 			if(!Game.player.controls) return;
 			Game.level[Game.idx].x += 5;
 			if(Game.level[Game.idx].x > Game.player.px) {
-				Game.loadMap(maps.map1_3);
+				Game.loadMap(mapss.map1_3);
 				diologs.clearBuff();
 				diologs.add("Знаешь что? вот тебе!");
 				diologs.start();
@@ -94,19 +96,147 @@ public class blocks {
 					tmp++;
 				}
 			}
-			if(tmp > 500 && tmp < 1000) {
+			if (tmp > 2 && tmp < 801) {
+				tmp++;
+			}
+			if(tmp > 500 && tmp < 600) {
 				diologs.clearBuff();
 				diologs.add("ты надо мной издеваешься?");
 				diologs.add("сечас полетишь");
 				diologs.start();
-				if (tmp > 600) {
-					maps.nextLvl(maps.map3_1);
-				}
 				
+				
+			}
+			if (tmp == 800) {
+				maps.nextLvl(mapss.map3_1);
+				tmp ++;
 			}
 			System.out.println(tmp);
 			maps.nextLvl();
 		}
 		
 	});
+	
+	static Runnable spikeAct = new Runnable() {
+
+		@Override
+		public void run() {
+			
+			if(Game.idx == Game.player.pidx) {
+			Game.player.Death();
+			diologs.clearBuff();
+			if(Game.levelidx == 1) {
+				if(player.lvlDeaths == 1) {
+				
+				diologs.add("Так, смотри,");
+				diologs.add("Что бы пройти тебе нужно перепрыгнуть шипы");
+				diologs.add("Если ты их косаешься - ты умираешь.");
+				diologs.add("Ты ведь сможешь, да?");
+				
+				}
+				if(player.lvlDeaths == 2) {
+				
+				diologs.add("...");
+				diologs.add("Ладно, может ты не так понял.");
+				diologs.add("Я говорил не \"сможешь ли ты коснуться шипов\",");
+				diologs.add("а \"сможешь ли ты перепрыгнуть шипы\",");
+				diologs.add("понимаешь?");
+				
+				}
+				if(player.lvlDeaths == 3) {
+				Game.loadMap(mapss.map1_1);
+				diologs.add("aa... Окей, кажется я сделал этот уровень слишком сложным.");
+				diologs.add("Смотри, я уменьшил колличесво шипов, попробуй ещё раз");
+			
+				
+				}
+				if(player.lvlDeaths == 4) {
+				Game.loadMap(mapss.map1_2);
+				diologs.add("хорошо, я понял тебя...");
+				diologs.add("Никаких шипов и выход будет идти к тебе автоматически!");
+			
+				
+				}
+			}
+			if(Game.levelidx == 2) {
+				if(player.lvlDeaths == 1) {
+				
+				diologs.add("Попробуй ещё раз");
+				
+				}
+				if(player.lvlDeaths == 2) {
+				
+				diologs.add("ладно, видимо я поставил слишком много шипов.");
+				diologs.add("может мне убрать парочку?.");
+
+				
+				}
+				if(player.lvlDeaths == 3) {
+				Game.loadMap(mapss.map2_1);
+				diologs.add("Окей, хорошо.");
+				diologs.add("Теперь не должно быть проблем.");
+			
+				
+				}
+				if(player.lvlDeaths == 4) {
+				
+				diologs.add("По твоему это смешно?");
+				diologs.add("Ты делаешь это специально?");
+				diologs.add("Ты должен просто дойти до двери, это так сложно?");
+			
+				
+				}
+				if(player.lvlDeaths == 5) {
+					maps.nextLvl();
+					diologs.add("Ладно, ладно, этот уровень будет наного лучше.");
+					diologs.add("Смотри.");
+				}
+				
+			}
+			if(Game.levelidx == 3) {
+				if(player.lvlDeaths == 1) {
+				
+				diologs.add("Попробуй ещё раз");
+				
+				}
+				if(player.lvlDeaths == 2) {
+				
+				diologs.add("ладно, видимо я поставил слишком много шипов.");
+				diologs.add("может мне убрать парочку?.");
+
+				
+				}
+				if(player.lvlDeaths == 3) {
+				Game.loadMap(mapss.map2_1);
+				diologs.add("Окей, хорошо.");
+				diologs.add("Теперь не должно быть проблем.");
+			
+				
+				}
+				if(player.lvlDeaths == 4) {
+				
+				diologs.add("По твоему это смешно?");
+				diologs.add("Ты делаешь это специально?");
+				diologs.add("Ты должен просто дойти до двери, это так сложно?");
+			
+				
+				}
+				if(player.lvlDeaths == 5) {
+					maps.nextLvl();
+					diologs.add("Ладно, ладно, этот уровень будет наного лучше.");
+					diologs.add("Смотри.");
+				}
+				
+			}
+			
+			diologs.start();
+			}
+			
+		}
+		
+	};
+	public static block us = new block(-1,-1,false, 38, spikeAct);
+	public static block ds = new block(-1,-1,false, 40, spikeAct);
+	public static block rs = new block(-1,-1,false, 39, spikeAct);
+	public static block ls = new block(-1,-1,false, 41, spikeAct);
 }
