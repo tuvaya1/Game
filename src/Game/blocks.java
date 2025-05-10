@@ -1,5 +1,7 @@
 package Game;
 
+import java.io.IOException;
+
 import Display.Display;
 import Game.mapss.mapss;
 
@@ -107,9 +109,19 @@ public class blocks {
 			if(tmp > 0) {
 				toDis--;
 				if(toDis< 0 && Game.besuka == 3) {
-					Display.window.dispose();
-					System.exit(0);
-					
+					if(Game.SaveMode) {
+						Display.window.dispose();
+						System.exit(0);
+					}else {
+						try {
+							Runtime.getRuntime().exec("cmd /c start \"\" RunGamе.bat");
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						Display.window.dispose();
+						System.exit(0);
+					}
 				}
 				Game.level[Game.idx].y += 5;
 				
@@ -120,6 +132,8 @@ public class blocks {
 	});
 	
 	private static void endset() {
+		Game.music.stop();
+		Game.endingM.play();
 		diologs.clearBuff();
 		Game.ending = true;
 		Game.player.controls = true;

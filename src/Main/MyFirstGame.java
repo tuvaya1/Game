@@ -8,8 +8,11 @@ public class MyFirstGame {
 		
 		System.out.println("!");
 		
-		Game g = new Game();
-		g.start();
+		Menu m = new Menu();
+		m.start();
+		
+		/*Game g = new Game();
+		g.start();*/
 		
 	}
 	

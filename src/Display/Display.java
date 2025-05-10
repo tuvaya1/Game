@@ -4,8 +4,12 @@ import java.awt.Canvas;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.MouseInfo;
+import java.awt.Point;
 import java.awt.RenderingHints;
 import java.awt.Toolkit;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
@@ -17,6 +21,9 @@ import Game.Game;
 
 public abstract class Display {
 	
+	public static byte Mpress;
+	public static boolean Menter;
+	
 	private static Canvas content;
 	public static JFrame window;
 	private static BufferedImage buffer;
@@ -25,9 +32,10 @@ public abstract class Display {
 	private static int clearColor;
 	private static BufferStrategy bufferStrategy;
 	private static boolean created;
+	private static boolean full;
 
 	public static void create(int Width, int Height, String Title, int _clearColor, int numBuffers, boolean fullsc) {
-		
+		full = fullsc;
 		if(created)
 			window.dispose();
 		
@@ -35,9 +43,45 @@ public abstract class Display {
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		content = new Canvas();
 		
+		content.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				Mpress = 0;
+
+			}
+			@Override
+			public void mousePressed(MouseEvent e) {
+				Mpress = (byte) e.getButton();
+				
+				
+
+			}
+
+			
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				Menter = true;
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				Menter = false;
+				
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		
 		Dimension size = new Dimension(Width, Height);
 		window.getContentPane().add(content);
-		if (fullsc) {
+		if (full) {
 				window.setUndecorated(true);
 				window.pack();
 				window.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -80,9 +124,9 @@ public abstract class Display {
 		double height = screenSize.getHeight();
 		double sx = width/640;
 		double sy = height/352;
-		if(!Game.t) ((Graphics2D) g).scale(sx, sy);
+		if(full) ((Graphics2D) g).scale(sx, sy);
 		g.drawImage(buffer ,0 ,0 , null);	
-		if(!Game.t) ((Graphics2D) g).scale(1/sx, 1/sy);
+		if(full) ((Graphics2D) g).scale(1/sx, 1/sy);
 		bufferStrategy.show();
 	}
 	
@@ -103,6 +147,17 @@ public abstract class Display {
 	
 	public static void addInputListener(Input inputListener) {
 		window.add(inputListener);
+	}
+	
+	public static Point getScLoc() {
+		int sx = window.getLocationOnScreen().x;
+		int sy = window.getLocationOnScreen().y;
+		int mx = (int)((MouseInfo.getPointerInfo().getLocation().x));
+		int my = (int)((MouseInfo.getPointerInfo().getLocation().y));
+		mx -= sx+8;
+		my -= sy+32;
+		Point tmp = new Point(mx, my);
+		return tmp;
 	}
 	
 }

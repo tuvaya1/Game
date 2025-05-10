@@ -62,13 +62,15 @@ public class Game implements Runnable{
 		private float time;
 		private float timet;
 		private int loading;
-		private Sound music;
-		static int besuka;
+		static Sound music;
+		static boolean SaveMode;
+		static int besuka  = 3;
 		public static boolean t;
 		static boolean playervis;
 		public static boolean ending;
+		public static Sound endingM;
 	
-	public Game() {
+	public Game(boolean saveMode) {
 		Loading = ResourceLoader.loadimage("loading_screen.png");
 		player = new player();
 		running = false;
@@ -78,7 +80,7 @@ public class Game implements Runnable{
 		Display.clear();
 		graphics.drawImage(Loading,0,0,null);
 		Display.swapBuffers();
-		
+		SaveMode = saveMode;
 		System.out.println("!");
 		playervis = true;
 		
@@ -133,8 +135,10 @@ public class Game implements Runnable{
 		}
 		File f = new File("resource/Music/msc_level.wav");
 		music = new Sound(f);
+		f = new File("resource/Music/msc_results.wav");
+		endingM = new Sound(f);
 		Display.swapBuffers();
-		loadMap(maps.map1);
+		loadMap(maps.map4);
 		levelidx = 1;
 		/*for (int i = 0; i < 38; i++) {
 			
@@ -147,7 +151,7 @@ public class Game implements Runnable{
 		player.py = level[880].y;
 		loading = 1;
 		diologs.clearBuff();
-		diologs.add("");
+		
 		diologs.add("");
 		diologs.add("эээ, Привет игрок!");
 		diologs.add("Добро пожаловать в мою первую игру!");
@@ -297,7 +301,7 @@ public class Game implements Runnable{
 		if(playervis)
 		graphics.drawImage(player.draw(), player.px, player.py, null);
 		graphics.setColor(Color.black);
-		graphics.drawString(String.valueOf(player.px/16), 0, 10);
+		/*graphics.drawString(String.valueOf(player.px/16), 0, 10);
 		graphics.drawString(String.valueOf(player.py/16), 0, 20);
 		graphics.drawString(String.valueOf(player.sx), 0, 30);
 		graphics.drawString(String.valueOf(player.sy), 0, 40);
@@ -305,8 +309,8 @@ public class Game implements Runnable{
 		graphics.drawString(String.valueOf(levelidx), 0, 60);
 		graphics.drawString(String.valueOf(player.Deaths), 0, Height-10);
 		graphics.drawString(String.valueOf(player.lvlDeaths), 0, Height);
-		graphics.drawString(String.valueOf(besuka), 0, Height-20);
-		
+		graphics.drawString(String.valueOf(besuka), 0, Height-20);*/
+		//graphics.drawString(String.valueOf(SaveMode), 0, Height);
 		
 		FontMetrics fm = graphics.getFontMetrics();
 		int x = (Width - (int) fm.stringWidth(diologs.Nowtext)) / 2;
