@@ -3,9 +3,11 @@ package Game;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
+import java.io.File;
 
 import Display.Display;
 import utils.ResourceLoader;
+import utils.Sound;
 import utils.util;
 
 public class player {
@@ -26,10 +28,16 @@ public class player {
 	static int lvlDeaths;
 	
 	
+	
 	static float frame;
 	
 	static float sx;
 	static float sy;
+	
+	Sound Death;
+	Sound Restart;
+	Sound jump;
+	
 	
 	static BufferedImage player;
 	
@@ -106,6 +114,7 @@ public class player {
 			
 			py = (((int) (py+sy)/16))*16;
 			sy = 0;
+			if(v > 0) {jump.play();}
 			sy = v*-jumpForce;
 			py += sy;
 		}
@@ -118,18 +127,31 @@ public class player {
 	}
 	
 	void Death() {
-		
+		Death.play();
 		px = Game.level[880].x;
 		py = Game.level[880].y;
 		Deaths++;
 		lvlDeaths++;
 		sx = 0;
 		sy = 0;
-		
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Restart.play();
 	}
 
 	public void loading() {
-		
+		File f = new File("resource/Sounds/sfx_death.wav");
+		Death = new Sound(f);
+		Display.swapBuffers();
+		f = new File("resource/Sounds/sfx_restart.wav");
+		Restart = new Sound(f);
+		Display.swapBuffers();
+		f = new File("resource/Sounds/sfx_jump.wav");
+		jump = new Sound(f);
 		Display.swapBuffers();
 		
 	}	
