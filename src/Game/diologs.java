@@ -15,6 +15,8 @@ public class diologs {
 	static int idx;
 	private static int time;
 	private static int fixtime;
+	private static float c;
+	private static String tmptext;
 	private int countofreplics = 1;
 	
 	private void loading() {
@@ -49,27 +51,32 @@ public class diologs {
 		}*/
 		time = 0;
 		fixtime = 0;
+		c = 0;
 		
 	}
 	
 	public static void update() {
 		
-	
+		
 		if(time == fixtime) {
 			Game.player.controls = false;
 			if (idx < textBuffer.size()) {
-			Nowtext = textBuffer.get(idx);
+			tmptext = textBuffer.get(idx);
 			//soundBuffer.get(soundB.get(idx)).play();
 			idx++;
 			time = 0;
 			fixtime = 200;
-			
+			c = 0;
 			}else {
 				Game.player.controls = true;
 				Nowtext = "";
+				
 			}
 		}
-		
+		if(tmptext != null && c > 0 && c < tmptext.length()+1)
+		Nowtext = tmptext.substring(0, (int) c);
+		c += 0.5f;
+				System.out.println(c);
 		time ++;
 		
 		

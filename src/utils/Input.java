@@ -68,5 +68,10 @@ public class Input extends JComponent{
 		}
 		return tmp;
 	}
+
+	public void close() {
+		
+		
+	}
 	
 }

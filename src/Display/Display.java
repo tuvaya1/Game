@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
@@ -12,7 +13,7 @@ import java.util.Arrays;
 import javax.swing.JFrame;
 import utils.Input;
 
-
+import Game.Game;
 
 public abstract class Display {
 	
@@ -74,7 +75,14 @@ public abstract class Display {
 	
 	public static void swapBuffers() {
 		Graphics g = bufferStrategy.getDrawGraphics();
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		double width = screenSize.getWidth();
+		double height = screenSize.getHeight();
+		double sx = width/640;
+		double sy = height/352;
+		if(!Game.t) ((Graphics2D) g).scale(sx, sy);
 		g.drawImage(buffer ,0 ,0 , null);	
+		if(!Game.t) ((Graphics2D) g).scale(1/sx, 1/sy);
 		bufferStrategy.show();
 	}
 	

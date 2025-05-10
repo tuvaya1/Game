@@ -61,7 +61,7 @@ public class Game implements Runnable{
 		private float timet;
 		private int loading;
 		private Sound music;
-		private boolean t;
+		public static boolean t;
 		static boolean playervis;
 	
 	public Game() {
@@ -175,12 +175,21 @@ public class Game implements Runnable{
 		if(input.getKey(KeyEvent.VK_O) && t) {
 			Display.create(Width, Height, Title, _clearColor, numBuffers, true);
 			graphics = Display.getGraphics();
+			
+			input = new Input();
+			Display.addInputListener(input);
 			t = false;
+			System.out.println("FULL");
 		}
+		
+		
 		if(input.getKey(KeyEvent.VK_P) && !t) {
 			Display.create(Width, Height, Title, _clearColor, numBuffers, false);
 			graphics = Display.getGraphics();
+			input = new Input();
+			Display.addInputListener(input);
 			t = true;
+			System.out.println("WIN");
 		}
 		if(loading == 0) {
 			
