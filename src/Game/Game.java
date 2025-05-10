@@ -220,7 +220,7 @@ public class Game implements Runnable{
 		}
 		if (player.pidx == 648 && player.Deaths == 0) {
 			timet += 0.5;
-			System.out.println(timet);
+			
 		}
 		Display.swapBuffers();
 	}

@@ -47,13 +47,19 @@ public class player {
 		if(animation == 0)
 		tmp = player.getSubimage((64*dir)+((int)frame%2)*16, 0, 16, 16);
 		if(animation == 1)
-			tmp = player.getSubimage((64*dir)+32+(((int)frame%2)*16), 0, 16, 16);
+			tmp = player.getSubimage(((64*dir)+32)+(((int)frame%2)*16), 0, 16, 16);
+		if(animation == 2)
+			tmp = player.getSubimage(((64*dir))+32+(((int)frame%2)*16), 16, 16, 16);
+		if(animation == 3)
+			tmp = player.getSubimage(((64*dir))+(((int)frame%4)*16), 32, 16, 16);
+		/*if(animation == 4)
+			tmp = player.getSubimage(((64*dir))+32+(((int)frame%2)*16), 16, 16, 16);*/
 		frame += 0.1f;
 		return tmp;
 	}
 	
 	void playerUP() {
-		animation = 0;
+		
 		int h = 0;
 		int v = 0; 
 		if (controls) {
@@ -61,12 +67,22 @@ public class player {
 			v = (util.BiI(Game.input.getKey(KeyEvent.VK_UP)));
 		}
 		sx += h*playerSpeed;
-
-		if (h != 0)
-		dir = (h == 1) ? 0 : 1;
+		
+		
+		if (h != 0) {
+			animation = -1;
+			dir = (h == 1) ? 0 : 1;
+		}	
 		h = (h == 1) ? 1 : 0;
-		if (h != 0) 
-			animation = 1;
+		
+		if(sy > 0.3) {
+			animation = 2;
+		}
+		if(sy < 0) {
+			animation = 3;
+		}
+		
+		
 		if(py+sy+ph > Game.Height) {
 			
 			Death();
@@ -80,6 +96,12 @@ public class player {
 		} 
 		px += Math.round(sx);
 		if(Game.Current((px+8)/16, (int) (py+sy+ph)/16)) {
+			
+			if ((animation == -1)) {
+				animation = 1;
+			}else {
+				animation = 0;
+			}
 			
 			py = (((int) (py+sy)/16))*16;
 			sy = 0;
@@ -100,7 +122,8 @@ public class player {
 		py = Game.level[880].y;
 		Deaths++;
 		lvlDeaths++;
-		
+		sx = 0;
+		sy = 0;
 		
 	}	
 	

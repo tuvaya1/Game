@@ -36,7 +36,7 @@ public class maps {
 		@Override
 		public void run() {
 			if(!Game.player.controls) return;
-			Game.level[Game.idx].x += (Game.player.px-Game.level[Game.idx].x)/10;
+			Game.level[Game.idx].x += 5;
 			
 			nextLvl();
 		}
