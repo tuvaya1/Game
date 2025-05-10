@@ -273,7 +273,7 @@ public class blocks {
 				diologs.add("По твоему это смешно?");
 				diologs.add("Ты делаешь это специально?");
 				diologs.add("Ты должен просто дойти до двери, это так сложно?");
-				diologs.add("Я сделал этот уровень более легким, теперь он не такой красивый");
+				diologs.add("Я сделал этот уровень более легким");
 				
 				}
 				if(player.lvlDeaths == 5) {
@@ -309,13 +309,7 @@ public class blocks {
 				diologs.add("Я так много прошу?");
 				
 				}
-				if(player.lvlDeaths == 5) {
-					maps.nextLvl();
-					diologs.add("Ладно, ладно, я просто перенесу тебя на следующий уровень");
-					
-					if(player.Deaths > 5)
-					diologs.add("Вновь уровень был пройдет автоматически.");
-				}
+				
 				
 			}
 			if(Game.levelidx == 4) {

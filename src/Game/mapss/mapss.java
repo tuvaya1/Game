@@ -154,8 +154,8 @@ public class mapss extends blocks {
 			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,lu,ru,  e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
 			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,l, r,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
 			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,l, r,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,                                                                                   
-			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, lu,u, u, u, u,    u,u,u,ul,r,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
-			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, l, w, w, w, w,    w,w,w,w, r,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
+			w,r,us,us,us,  us,us,us,us,us, us,us,us,us,us, lu,u, u, u, u,    u,u,u,ul,r,   us, us, us, us, us,     us,us,us,us,us, us,us,us,l,w,
+			w,ur,u,u,u,  u,u,u,u,u, u,u,u,u,u, ul, w, w, w, w,    w,w,w,w, ur,   u, u, u, u, u,     u,u,u,u,u, u,u,u,ul,w,
 			tech2
 			
 			
@@ -181,8 +181,8 @@ public class mapss extends blocks {
 			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,ls,lu,ru,  e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
 			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,ls,l, r,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
 			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,ls,l, r,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,                                                                                   
-			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, lu,u, u, u, u,    u,u,u,ul, r,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
-			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, l, w, w, w, w,    w,w,w,w,  r,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
+			w,r,us,us,us,  us,us,us,us,us, us,us,us,us,us, lu,u, u, u, u,    u,u,u,ul, r,   us, us, us, us, us,     us,us,us,us,us, us,us,us,l,w,
+			w,ur,u,u,u,  u,u,u,u,u, u,u,u,u,u, ul, w, w, w, w,    w,w,w,w, ur,   u, u, u, u, u,     u,u,u,u,u, u,u,u,ul,w,
 			tech2
 			
 			
