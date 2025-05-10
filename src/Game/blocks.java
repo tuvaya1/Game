@@ -106,7 +106,7 @@ public class blocks {
 			}
 			if(tmp > 0) {
 				toDis--;
-				if(toDis< 0) {
+				if(toDis< 0 && Game.besuka == 3) {
 					Display.window.dispose();
 					System.exit(0);
 					
@@ -126,12 +126,18 @@ public class blocks {
 		if (Game.besuka == 0) {
 			diologs.add("Ура, ты прошел мою игру!");
 			diologs.add("Ты харош!");
+			diologs.add("Закрывай игру");
 		}else if (Game.besuka == 3) {
 			diologs.add("ТЫ УЖАСЕН!");
 			diologs.add("Я НЕ МОГУ ПРЕДСТАВИТЬ НИ ОДНОГО ЧЕЛОВЕКА КОТОРЫЙ ТАК ПЛОХО ИГРАЕТ!");
 			diologs.add("ЗНАЕШЬ ЧТО?!");
 			diologs.add("АРИВИДЕРЧИ!");
 			toDis = 800;
+		}else {
+			diologs.add("Хорошо");
+			diologs.add("Не идеально, но хорошо");
+			diologs.add("Спасибо за игру");
+			diologs.add("Закрывай игру");
 		}
 		diologs.start();
 		System.out.println("!");

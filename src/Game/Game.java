@@ -117,6 +117,8 @@ public class Game implements Runnable{
 		diologs.loading();
 		player.loading();
 		BackGround = ResourceLoader.loadimage("102079.jpg");
+		GoodEnd = ResourceLoader.loadimage("ending1.png");
+		MidEnd = ResourceLoader.loadimage("ending3.png");
 		for (int i = 0; i < tiles; i++) {
 			String tmp = "tileset/1 (" + (String.valueOf(i)) +").png";
 			try {
@@ -132,7 +134,7 @@ public class Game implements Runnable{
 		File f = new File("resource/Music/msc_level.wav");
 		music = new Sound(f);
 		Display.swapBuffers();
-		loadMap(maps.map4);
+		loadMap(maps.map1);
 		levelidx = 1;
 		/*for (int i = 0; i < 38; i++) {
 			
@@ -145,7 +147,6 @@ public class Game implements Runnable{
 		player.py = level[880].y;
 		loading = 1;
 		diologs.clearBuff();
-		diologs.add("");
 		diologs.add("");
 		diologs.add("");
 		diologs.add("эээ, Привет игрок!");
@@ -243,6 +244,18 @@ public class Game implements Runnable{
 			}else {
 				graphics.drawImage(MidEnd,0,0,null);
 			}
+			FontMetrics fm = graphics.getFontMetrics();
+			int x = (Width - (int) fm.stringWidth(diologs.Nowtext)) / 2;
+			graphics.setColor(Color.black);
+			graphics.drawString(String.valueOf(diologs.Nowtext), x, Height-30);
+			graphics.setColor(Color.white);
+			graphics.drawString(String.valueOf(diologs.Nowtext), x-1, Height-31);
+			graphics.setColor(Color.black);
+			graphics.drawString(String.valueOf(player.Deaths), 531, 275);
+			graphics.setColor(Color.white);
+			graphics.drawString(String.valueOf(player.Deaths), 530, 274);
+			Display.swapBuffers();
+			return;
 		}
 		int sx = 10;
 		float st = 0.5f;
