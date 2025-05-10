@@ -127,7 +127,7 @@ public class Game implements Runnable{
 		File f = new File("resource/Music/msc_level.wav");
 		music = new Sound(f);
 		Display.swapBuffers();
-		loadMap(maps.map1);
+		loadMap(maps.map3);
 		levelidx = 1;
 		/*for (int i = 0; i < 38; i++) {
 			
@@ -139,7 +139,7 @@ public class Game implements Runnable{
 		player.px = level[880].x;
 		player.py = level[880].y;
 		loading = 1;
-		diologs.clearBuff();
+		/*diologs.clearBuff();
 		diologs.add("");
 		diologs.add("");
 		diologs.add("");
@@ -150,7 +150,7 @@ public class Game implements Runnable{
 		diologs.add("но надеюсь что тебе будет интересно");
 		diologs.add("Так... Смотри, здесь тебе нужно просто дойти до вон той двери,");
 		diologs.add("вот ти штуки впереди это шипы, все понятно?");
-		diologs.start();
+		diologs.start();*/
 		music.play();
 	}
 	

@@ -7,6 +7,7 @@ public class maps {
 	
 	static block tech = new block(128,258,true, 0,null);
 	static block tech2 = new block(272,304,true, 0,null);
+	static block tech3 = new block(256,240,true, 0,null);
 	static block w = new block(-1,-1,true, 19,null);
 	static block d = new block(-1,-1,true, 24,null);
 	static block u = new block(-1,-1,true, 14,null);
@@ -264,65 +265,61 @@ public class maps {
 			
 	};
 	static block[] map2 = {
-			w,w,w,w,w,  w,w,w,w,w, w,w,w,w,w, w,  w, w, w, w,    w,w,w,w, w,   w, w, w, w, w,     w,w,w,w,w, w,w,w,w,w,
-			w,dr,d,d,d, d,d,d,d,d, d,d,d,d,d, d,  d, d, d, d,    d,d,d,d, d,   d, d, d, d, d,     d,d,d,d,d, d,d,d,dl,w,
-			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,  e, e, e, e,    e,e,e,e, e,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
-			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,  e, e, e, e,    e,e,e,e, e,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
-			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,  e, e, e, e,    e,e,e,e, e,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
-			                                                                                                      
-			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,  e, e, e, e,    e,e,e,e, e,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
-			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,  e, e, e, e,    e,e,e,e, e,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
-			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,  e, e, e, e,    e,e,e,e, e,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
-			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,  e, e, e, e,    e,e,e,e, e,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
-			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,  e, e, e, e,    e,e,e,e, e,   e, e, e, D, e,     e,e,e,e,e, e,e,e,l,w,
-			                                                                                                      
-			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,  e, e, e, e,    e,e,e,ls,lu,  u, u, u, ru, e,     e,e,e,e,e, e,e,e,l,w,
-			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,  e, e, e, e,    e,e,e,ls,ld,  d, d, d, rd, e,     e,e,e,e,e, e,e,e,l,w,
-			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,  e, e, e, e,    e,e,e,e, ds,  ds,ds,ds,ds,e,     e,e,e,e,e, e,e,e,l,w,
-			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,  e, e, e, e,    e,e,e,e, e,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
-			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, lu,  u, u, u, ru,  e,e,e,e, e,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
-			                                                                                                   
-			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, ld,  d, d, d, rd,  e,e,e,e, e,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
-			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, ds, ds,ds,ds,ds,   e,e,e,e, e,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
-			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,  e, e, e, e,    e,e,ls,lu,ru, e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
-			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,  e, e, e, e,    e,e,ls,l,r,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
-			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,  e, e, e, e,    e,e,ls,l,r,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
-			                                                                                    
-			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, lu, u, u, u, u,    u,u,u,ul,r,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
-			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, l,  w, w, w, w,    w,w,w,w, r,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
+			w,w,w,w,w,  w,w,w,w,w, w,w,w,w,w, w, w, w, w, w,    w,w,w,w,  w,   w, w, w, w, w,     w,w,w,w,w, w,w,w,w,w,
+			w,dr,d,d,d, d,d,d,d,d, d,d,d,d,d, d, d, d, d, d,    d,d,d,d,  d,   d, d, d, d, d,     d,d,d,d,d, d,d,d,dl,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,e,  e,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,e,  e,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,e,  e,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,                                                                                                    
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,e,  e,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,e,  e,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,e,  e,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,e,  e,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,e,  e,   e, e, e, D, e,     e,e,e,e,e, e,e,e,l,w,                                                                                                    
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,ls, lu,  u, u, u, ru,e,     e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,ls, ld,  d, d, d, rd,e,     e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,e,  ds,  ds,ds,ds,ds,e,     e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,e,  e,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, lu,u, u, u, ru,   e,e,e,e,  e,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,                                                                                      
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, ld,d, d, d, rd,   e,e,e,e,  e,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, ds,ds,ds,ds,ds,   e,e,e,e,  e,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,ls,lu,ru,  e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,ls,l, r,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,ls,l, r,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,                                                                                   
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, lu,u, u, u, u,    u,u,u,ul, r,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, l, w, w, w, w,    w,w,w,w,  r,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
 			tech2
 			
 			
 	};
 	
 	static block[] map3 = {
-			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,   w,w,w,w,w,     w,w,w,w,w,  w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
-			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,   w,w,w,w,w,     w,w,w,w,w,  w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
-			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
-			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
-			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
-			                                                              
-			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
-			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
-			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
-			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
-			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
-			                                                              
-			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
-			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
-			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
-			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
-			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
+			w,w,w,w,w,      w,w,w,w,w,      w,w,w,w,w,        w,w,w,w,w,          w,w,w,w,w,       w,w,w,w,w,      w,w,w,w,w,      w,w,w,w,w,
+			w,dr,d,d,d,     d,d,d,d,d,      d,d,d,d,d,        d,d,d,d,d,          d,d,d,d,d,       d,d,d,d,d,      d,d,d,d,d,      d,d,d,dl,w,
+			w,r,ds,ds,ds,   ds,ds,ds,ds,ds, ds,ds,ds,ds,ds,   ds,ds,ds,ds,ds,     ds,ds,ds,ds,ds,  ds,ds,ds,ds,ds, ds,ds,ds,ds,ds, ds,ds,ds,l,w,
+			w,r,rs,e,e,     e,e,e,e,e,      e,e,e,e,e,        e,e,e,e,e,          e,e,e,e,e,       e,e,e,e,e,      e,e,e,e,e,      e,e,ls,l,w,
+			w,r,rs,e,e,     e,e,e,e,e,      e,e,e,e,e,        e,e,e,e,e,          e,e,e,e,e,       e,e,e,e,e,      e,e,e,e,e,      e,e,ls,l,w,
+			                                                                                                                               
+			w,r,rs,e,e,     e,e,e,e,e,      e,e,e,e,e,        e,e,e,e,e,          e,e,e,e,e,       e,e,e,e,e,      e,e,e,e,e,      e,e,ls,l,w,
+			w,r,rs,e,e,     e,e,e,e,e,      e,e,e,e,e,        e,e,e,e,e,          e,e,e,e,e,       e,e,e,e,e,      e,e,e,e,e,      e,e,ls,l,w,
+			w,r,rs,e,e,     e,e,e,e,e,      e,e,e,e,e,        e,e,e,e,e,          e,e,e,e,e,       e,e,e,e,e,      e,e,e,e,e,      e,e,ls,l,w,
+			w,r,rs,e,e,     e,e,e,e,e,      e,e,e,e,e,        e,e,e,e,e,          e,e,e,e,e,       e,e,e,e,e,      e,e,e,e,e,      e,e,ls,l,w,
+			w,r,rs,e,e,     e,e,e,e,e,      e,e,e,e,e,        e,e,e,e,e,          e,e,e,e,e,       u,u,ru,e,e,      e,e,e,e,e,      e,e,ls,l,w,
+			                                                                                                                               
+			w,r,rs,e,e,     e,e,e,e,e,      e,e,e,e,e,        e,e,e,e,e,          e,e,e,e,e,       d,dl,r,e,e,      e,e,e,e,e,      e,e,ls,l,w,
+			w,r,rs,e,e,     e,e,e,e,e,      e,e,e,e,e,        e,e,e,e,e,          e,e,e,e,e,       e,l,r,e,e,      e,e,e,e,e,      e,e,ls,l,w,
+			w,r,rs,e,e,     e,e,e,e,e,      e,e,e,e,e,        e,e,e,e,e,          e,e,e,e,e,       e,l,r,e,e,      e,e,e,e,e,      e,e,ls,l,w,
+			w,r,rs,e,e,     e,e,e,e,e,      e,e,e,e,e,        e,e,e,e,e,          lu,ru,e,e,e,     e,l,r,e,e,      e,e,e,e,e,      e,e,ls,l,w,
+			w,r,rs,e,e,     e,e,e,e,e,      e,e,e,e,e,        e,e,e,e,e,          l,r,e,e,e,       e,l,r,e,e,      e,e,e,e,e,      e,e,ls,l,w,
+			                                                                                                                               
+			w,r,rs,e,e,     e,e,e,e,e,      e,e,e,e,e,        e,e,e,e,e,          l,r,e,e,e,       e,l,r,e,e,      e,e,e,e,e,      e,e,ls,l,w,
+			w,r,rs,e,e,     e,e,e,e,e,      e,e,e,e,e,        lu,u,u,u,u,         ul,r,u,u,u,      u,ul,r,e,e,      e,e,e,e,e,      e,e,ls,l,w,
+			w,r,rs,e,e,     e,e,e,e,e,      e,e,e,e,e,        l,dr,d,d,d,         d,rd,d,d,d,      d,d,rd,e,e,      e,e,e,e,e,      e,e,ls,l,w,
+			w,r,rs,e,e,     e,e,e,e,e,      e,e,e,e,e,        l,r,e,e,e,          e,e,e,e,e,       e,e,e,e,e,      e,e,e,e,e,      e,e,ls,l,w,
+			w,r,us,us,us,   us,us,us,us,us, us,us,us,us,us,   l,r,us,us,us,       us,us,us,us,us,  us,us,us,us,us, us,us,us,us,us, us,us,us,l,w,
 			                                                  
-			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
-			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
-			w,w,w,w,w, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
-			w,w,w,w,w, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
-			w,w,w,w,w, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
-			                                                  
-			w,w,w,w,w, e,e,e,e,e, e,e,e,e,e,   w,w,w,w,w,     w,w,w,w,w,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
-			w,w,w,w,w, e,e,e,e,e, e,e,e,e,e,   w,w,w,w,w,     w,w,w,w,w,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
-			tech2
+			w,ur,u,u,u,     u,u,u,u,u,      u,u,u,u,u,        u,u,u,u,u,          u,u,u,u,u,       u,u,u,u,u,      u,u,u,u,u,      u,u,u,ul,w,
+			w,w,w,w,w,      w,w,w,w,w,      w,w,w,w,w,        w,w,w,w,w,          w,w,w,w,w,       w,w,w,w,w,      w,w,w,w,w,      w,w,w,w,w,
+			tech3                 
 			
 			
 
