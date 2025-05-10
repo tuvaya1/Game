@@ -10,19 +10,18 @@ public class maps extends mapss {
 	
 	
 	static void nextLvl(block[] map) {
-		if(!Game.player.controls) return;
-		int idx = (Game.level[Game.idx].x/16)+((Game.level[Game.idx].y/16)*Game.Gmax);
-		System.out.println(idx);
-		if(idx == Game.player.pidx) {
+		
+		
+		
 			
-				Game.loadMap(map);
+			Game.loadMap(map);
 			
 			
 			Game.player.px = Game.level[880].x;
 			Game.player.py = Game.level[880].y;
 			Game.player.lvlDeaths = 0;
 			
-		}
+		
 	}
 	
 	static void nextLvl() {

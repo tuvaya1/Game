@@ -6,6 +6,7 @@ public class blocks {
 	public static block tech = new block(128,258,true, 0,null);
 	public static block tech2 = new block(272,304,true, 0,null);
 	public static block tech3 = new block(128,240,true, 0,null);
+	public static block tech3_1 = new block(304,32,true, 0,null);
 	public static block tech4 = new block(48,304,true, 0,null);                
 	public static block w = new block(-1,-1,true, 19,null);
 	public static block d = new block(-1,-1,true, 24,null);
@@ -23,10 +24,18 @@ public class blocks {
 	public static block rr = new block(-1,-1,true, 21,null);
 	public static block t = new block(-1,-1,true, 16,null);
 	public static block e = new block(-1,-1,false, 0,null);
-	public static block t1 = new block(-1,-1,true, 43,null);
-	public static block t2 = new block(-1,-1,true, 44,null);
-	public static block t3 = new block(-1,-1,true, 45,null);
-	public static block t4 = new block(-1,-1,false, 46,null);
+	public static block t1 = new block(-1,-1,true, 43,new Runnable() {
+
+		@Override
+		public void run() {
+			if(Game.player.pidx == 179 && Game.level[Game.idx].texture < 46) {
+				Game.level[Game.idx].texture++;
+			}
+			if(Game.level[Game.idx].texture == 46) Game.level[Game.idx].collision = false;
+		}
+		
+	});
+	
 	public static block D = new block(-1,-1,false, 42,new Runnable() {
 	
 	
@@ -53,6 +62,43 @@ public class blocks {
 		}
 		
 	});
+	
+	public static block Dv = new block(-1,-1,false, 42,new Runnable() {
+		
+		private int tmp = 0;
+		@Override
+		public void run() {
+			int idx = Game.player.pidx;
+			if(idx == 468 || idx == 428 || idx == 429) {
+				
+				tmp = 1;
+				endset();
+				
+			}
+			if (tmp == 1) {
+				diologs.start();
+				tmp = 2;
+			}
+			if(tmp > 0) {
+				
+				Game.level[Game.idx].y += 5;
+				
+			}
+		}
+		
+		
+	});
+	
+	private static void endset() {
+		diologs.clearBuff();
+		diologs.add("ghjfkgfdklg");
+		diologs.add("ghjfkgfdklg");
+		diologs.add("ghjfkgfdklg");
+		diologs.add("ghjfkgfdklg");
+		diologs.add("ghjfkgfdklg");
+			
+	}
+	
 	public static block Do = new block(-1,-1,false, 42,new Runnable() {
 
 		private int tmp = 0;
@@ -96,7 +142,7 @@ public class blocks {
 					tmp++;
 				}
 			}
-			if (tmp > 2 && tmp < 801) {
+			if (tmp > 2 && tmp < 800) {
 				tmp++;
 			}
 			if(tmp > 500 && tmp < 600) {
@@ -111,7 +157,7 @@ public class blocks {
 				maps.nextLvl(mapss.map3_1);
 				tmp ++;
 			}
-			System.out.println(tmp);
+			//System.out.println(tmp);
 			maps.nextLvl();
 		}
 		
@@ -201,34 +247,35 @@ public class blocks {
 				}
 				if(player.lvlDeaths == 2) {
 				
-				diologs.add("ладно, видимо я поставил слишком много шипов.");
-				diologs.add("может мне убрать парочку?.");
+				diologs.add("*вздыхает*");
 
-				
 				}
 				if(player.lvlDeaths == 3) {
-				Game.loadMap(mapss.map2_1);
-				diologs.add("Окей, хорошо.");
-				diologs.add("Теперь не должно быть проблем.");
-			
+				
+				diologs.add("Ладно, кажется я перестарался...");
+				diologs.add("Надеюсь теперь ты его пройдешь.");
 				
 				}
 				if(player.lvlDeaths == 4) {
-				
-				diologs.add("По твоему это смешно?");
-				diologs.add("Ты делаешь это специально?");
-				diologs.add("Ты должен просто дойти до двери, это так сложно?");
-			
+					
+				diologs.add("Просто иди к финишу");
+				diologs.add("Я так много прошу?");
 				
 				}
 				if(player.lvlDeaths == 5) {
 					maps.nextLvl();
-					diologs.add("Ладно, ладно, этот уровень будет наного лучше.");
-					diologs.add("Смотри.");
+					diologs.add("Ладно, ладно, я просто перенесу тебя на следующий уровень");
+					
+					if(player.Deaths > 5)
+					diologs.add("Вновь уровень был пройдет автоматически.");
 				}
 				
 			}
-			
+			if(Game.levelidx == 4) {
+				
+				diologs.add("Это почти конец, попробуй ещё");
+				
+			}
 			diologs.start();
 			}
 			

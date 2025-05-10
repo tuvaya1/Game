@@ -37,6 +37,7 @@ public class player {
 	Sound Death;
 	Sound Restart;
 	Sound jump;
+	private int respawn;
 	
 	
 	static BufferedImage player;
@@ -69,6 +70,8 @@ public class player {
 	
 	void playerUP() {
 		pidx = ((px+8)/16)+(py/16)*Game.Gmax;
+		respawn--;
+		Game.playervis = respawn < 0;
 		if (!controls) { animation = 0; return;}
 		int h = 0;
 		int v = 0; 
@@ -137,13 +140,8 @@ public class player {
 		sx = 0;
 		sy = 0;
 		
-		try {
-			Thread.sleep(500);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		Game.playervis = true;
+		respawn = 50;
+		
 		Restart.play();
 	}
 

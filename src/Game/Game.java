@@ -65,7 +65,7 @@ public class Game implements Runnable{
 		static boolean playervis;
 	
 	public Game() {
-		Loading = ResourceLoader.loadimage("Loading.png");
+		Loading = ResourceLoader.loadimage("loading_screen.png");
 		player = new player();
 		running = false;
 		Display.create(Width, Height, Title, _clearColor, numBuffers, false);
@@ -115,12 +115,12 @@ public class Game implements Runnable{
 		BackGround = ResourceLoader.loadimage("102079.jpg");
 		for (int i = 0; i < tiles; i++) {
 			String tmp = "tileset/1 (" + (String.valueOf(i)) +").png";
-			/*try {
-				Thread.sleep(100);
+			try {
+				Thread.sleep(10);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}*/
+			}
 			Display.swapBuffers();
 			System.out.println(tmp);
 		tilemap[i] = ResourceLoader.loadimage(tmp);
@@ -273,11 +273,12 @@ public class Game implements Runnable{
 		if(playervis)
 		graphics.drawImage(player.draw(), player.px, player.py, null);
 		graphics.setColor(Color.black);
-		/*graphics.drawString(String.valueOf(player.px/16), 0, 10);
+		graphics.drawString(String.valueOf(player.px/16), 0, 10);
 		graphics.drawString(String.valueOf(player.py/16), 0, 20);
 		graphics.drawString(String.valueOf(player.sx), 0, 30);
 		graphics.drawString(String.valueOf(player.sy), 0, 40);
-		graphics.drawString(String.valueOf(player.pidx), 0, 50);*/
+		graphics.drawString(String.valueOf(player.pidx), 0, 50);
+		graphics.drawString(String.valueOf(levelidx), 0, 60);
 		graphics.drawString(String.valueOf(player.Deaths), 0, Height-10);
 		graphics.drawString(String.valueOf(player.lvlDeaths), 0, Height);
 		
