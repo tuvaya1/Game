@@ -68,7 +68,7 @@ public class player {
 	}
 	
 	void playerUP() {
-		if (!controls) return;
+		if (!controls) { animation = 0; return;}
 		int h = 0;
 		int v = 0; 
 		
@@ -127,6 +127,7 @@ public class player {
 	}
 	
 	void Death() {
+		Game.playervis = false;
 		Death.play();
 		px = Game.level[880].x;
 		py = Game.level[880].y;
@@ -134,12 +135,14 @@ public class player {
 		lvlDeaths++;
 		sx = 0;
 		sy = 0;
+		
 		try {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		Game.playervis = true;
 		Restart.play();
 	}
 

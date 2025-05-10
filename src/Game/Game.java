@@ -61,12 +61,14 @@ public class Game implements Runnable{
 		private float timet;
 		private int loading;
 		private Sound music;
+		private boolean t;
+		static boolean playervis;
 	
 	public Game() {
 		Loading = ResourceLoader.loadimage("Loading.png");
 		player = new player();
 		running = false;
-		Display.create(Width, Height, Title, _clearColor, numBuffers);
+		Display.create(Width, Height, Title, _clearColor, numBuffers, false);
 		graphics = Display.getGraphics();
 		System.out.println("!");
 		Display.clear();
@@ -74,11 +76,11 @@ public class Game implements Runnable{
 		Display.swapBuffers();
 		
 		System.out.println("!");
-		
+		playervis = true;
 		
 		input = new Input();
 		Display.addInputListener(input);
-		
+		t = true;
 		
 	}
 	
@@ -122,7 +124,7 @@ public class Game implements Runnable{
 			System.out.println(tmp);
 		tilemap[i] = ResourceLoader.loadimage(tmp);
 		}
-		File f = new File("resource/Music/e.wav");
+		File f = new File("resource/Music/msc_level.wav");
 		music = new Sound(f);
 		Display.swapBuffers();
 		loadMap(maps.map1);
@@ -170,6 +172,16 @@ public class Game implements Runnable{
 	}
 	
 	private void update() {
+		if(input.getKey(KeyEvent.VK_O) && t) {
+			Display.create(Width, Height, Title, _clearColor, numBuffers, true);
+			graphics = Display.getGraphics();
+			t = false;
+		}
+		if(input.getKey(KeyEvent.VK_P) && !t) {
+			Display.create(Width, Height, Title, _clearColor, numBuffers, false);
+			graphics = Display.getGraphics();
+			t = true;
+		}
 		if(loading == 0) {
 			
 			loading();
@@ -248,6 +260,7 @@ public class Game implements Runnable{
 				
 			
 		}
+		if(playervis)
 		graphics.drawImage(player.draw(), player.px, player.py, null);
 		graphics.setColor(Color.black);
 		graphics.drawString(String.valueOf(player.px/16), 0, 10);

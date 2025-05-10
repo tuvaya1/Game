@@ -25,23 +25,32 @@ public abstract class Display {
 	private static BufferStrategy bufferStrategy;
 	private static boolean created;
 
-	public static void create(int Width, int Height, String Title, int _clearColor, int numBuffers) {
+	public static void create(int Width, int Height, String Title, int _clearColor, int numBuffers, boolean fullsc) {
 		
 		if(created)
-			return;
+			window.dispose();
 		
 		window = new JFrame(Title);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		content = new Canvas();
 		
 		Dimension size = new Dimension(Width, Height);
-		content.setPreferredSize(size);
-		
-		window.setResizable(false);
 		window.getContentPane().add(content);
-		window.pack();
-		window.setLocationRelativeTo(null);
+		if (fullsc) {
+				window.setUndecorated(true);
+				window.pack();
+				window.setExtendedState(JFrame.MAXIMIZED_BOTH);
+			}else {
+				content.setPreferredSize(size);
+				
+				window.pack();
+				window.setLocationRelativeTo(null);
+			}
+		window.setResizable(false);
+		
 		window.setVisible(true);
+		
+		
 		
 		buffer = new BufferedImage(Width, Height, BufferedImage.TYPE_INT_ARGB);
 		bufferData = ((DataBufferInt) buffer.getRaster().getDataBuffer()).getData();

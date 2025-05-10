@@ -312,13 +312,46 @@ public class maps {
 			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
 			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
 			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
-			w,w,e,e,e, e,e,e,e,e, e,e,e,w,w,   w,w,w,w,w,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
+			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
 			                                                  
-			w,w,e,e,e, e,e,e,e,e, e,e,e,w,w,   w,w,w,w,w,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
-			w,w,e,e,e, e,e,e,e,e, e,e,e,ds,ds, ds,ds,ds,ds,e, e,ls,w,w,e, e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
-			w,w,w,w,w, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,ls,w,w,e, e,e,e,e,e, e,e,e,e,e, w,w,w,w,w,
-			w,w,w,w,w, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,ls,w,w,e, e,e,e,e,e, e,e,e,e,e, w,w,w,w,w,
-			w,w,w,w,w, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,ls,w,w,e, e,e,e,e,e, e,e,e,e,e, w,w,w,w,w,
+			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
+			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
+			w,w,w,w,w, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
+			w,w,w,w,w, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
+			w,w,w,w,w, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
+			                                                  
+			w,w,w,w,w, e,e,e,e,e, e,e,e,e,e,   w,w,w,w,w,     w,w,w,w,w,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
+			w,w,w,w,w, e,e,e,e,e, e,e,e,e,e,   w,w,w,w,w,     w,w,w,w,w,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
+			tech2
+			
+			
+
+	};
+	
+	static block[] map4 = {
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,   w,w,w,w,w,     w,w,w,w,w,  w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,   w,w,w,w,w,     w,w,w,w,w,  w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
+			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
+			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
+			                                                              
+			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
+			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
+			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
+			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
+			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
+			                                                              
+			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
+			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
+			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
+			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
+			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
+			                                                  
+			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
+			w,w,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,w,w,
+			w,w,w,w,w, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, w,w,w,w,w,
+			w,w,w,w,w, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, w,w,w,w,w,
+			w,w,w,w,w, e,e,e,e,e, e,e,e,e,e,   e,e,e,e,e,     e,e,e,e,e,  e,e,e,e,e, e,e,e,e,e, w,w,w,w,w,
 			                                                  
 			w,w,w,w,w, e,e,e,e,e, e,e,e,e,e,   w,w,w,w,w,     w,w,w,w,w,  e,e,e,e,e, e,e,e,e,e, w,w,w,w,w,
 			w,w,w,w,w, e,e,e,e,e, e,e,e,e,e,   w,w,w,w,w,     w,w,w,w,w,  e,e,e,e,e, e,e,e,e,e, w,w,w,w,w,
@@ -326,5 +359,4 @@ public class maps {
 			
 			
 	};
-	
 }
