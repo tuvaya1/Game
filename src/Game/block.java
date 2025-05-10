@@ -18,6 +18,14 @@ public class block {
 		this.action = r;
 		
 	}
+
+	public block(block block) {
+		this.x = block.x;
+		this.y = block.y;
+		this.collision = block.collision;
+		this.texture = block.texture;
+		this.action = block.action;
+	}
 	
 	
 }

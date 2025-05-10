@@ -43,12 +43,15 @@ public class diologs {
 		
 	
 		if(time == fixtime) {
+			Game.player.controls = false;
 			if (idx < textBuffer.size()) {
 			Nowtext = textBuffer.get(idx);
 			idx++;
 			time = 0;
-			fixtime = 100;
+			fixtime = 150;
+			
 			}else {
+				Game.player.controls = true;
 				Nowtext = "";
 			}
 		}

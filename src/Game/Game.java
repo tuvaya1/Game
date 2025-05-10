@@ -47,6 +47,7 @@ public class Game implements Runnable{
 		static player player;
 		static block[] level;
 		static int idx;
+		static int levelidx;
 		
 	// Resource
 		BufferedImage BackGround;
@@ -72,7 +73,8 @@ public class Game implements Runnable{
 		tilemap[i] = ResourceLoader.loadimage(tmp);
 		}
 		
-		level = maps.map1;
+		loadMap(maps.map1);
+		levelidx = 1;
 		/*for (int i = 0; i < 38; i++) {
 			
 			int x = i%Gmax;
@@ -82,6 +84,14 @@ public class Game implements Runnable{
 		}*/
 		player.px = level[880].x;
 		player.py = level[880].y;
+	}
+	
+	public static void loadMap(block[] map) {
+		block[] tmp = map;
+		level = new block[tmp.length];
+		for(int i = 0; i < tmp.length; i++) {
+		level[i] = new block(tmp[i]); 
+		}
 	}
 	
 	public synchronized void start() {
@@ -136,9 +146,12 @@ public class Game implements Runnable{
 	
 	
 	public static boolean Current(int px, int py) {
-		
+		try {
 		return level[(py*Gmax)+px].collision;
-		
+		}catch (ArrayIndexOutOfBoundsException e){
+			
+		}
+		return false;
 	}
 	
 	
@@ -173,9 +186,10 @@ public class Game implements Runnable{
 			
 			
 			int x = (level[i].x == -1) ? ((i%Gmax)*16) : level[i].x;
-			int y = (level[i].y == -1) ? (int)(Math.floor(i/Gmax)*16) :level[i].y;
+			int y = (level[i].y == -1) ? (int)(Math.floor(i/Gmax)*16) : level[i].y;
 			int texture = level[i].texture;
-			
+			level[i].x = x;
+			level[i].y = y;
 			graphics.drawImage(tilemap[texture], x, y, null);
 				
 				
@@ -204,7 +218,7 @@ public class Game implements Runnable{
 			diologs.add("Управление на стрелочки");
 			diologs.start();
 		}
-		if (player.pidx == 648) {
+		if (player.pidx == 648 && player.Deaths == 0) {
 			timet += 0.5;
 			System.out.println(timet);
 		}
