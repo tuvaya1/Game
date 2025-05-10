@@ -30,8 +30,8 @@ public class Game implements Runnable{
 	
 	public static final String  atlasFileName  = "Textures32.png";
 	
-	private boolean             running;
-	private Thread              gameThread;
+	private static boolean             running;
+	private static Thread              gameThread;
 	private Graphics2D 			graphics;
 	static Input               input;
 	
@@ -53,6 +53,8 @@ public class Game implements Runnable{
 	// Resource
 		BufferedImage Loading;
 		BufferedImage BackGround;
+		BufferedImage GoodEnd;
+		BufferedImage MidEnd;
 		
 		int tiles = 47;
 		BufferedImage[] tilemap = new BufferedImage[tiles];
@@ -61,8 +63,10 @@ public class Game implements Runnable{
 		private float timet;
 		private int loading;
 		private Sound music;
+		static int besuka;
 		public static boolean t;
 		static boolean playervis;
+		public static boolean ending;
 	
 	public Game() {
 		Loading = ResourceLoader.loadimage("loading_screen.png");
@@ -128,7 +132,7 @@ public class Game implements Runnable{
 		File f = new File("resource/Music/msc_level.wav");
 		music = new Sound(f);
 		Display.swapBuffers();
-		loadMap(maps.map1);
+		loadMap(maps.map4);
 		levelidx = 1;
 		/*for (int i = 0; i < 38; i++) {
 			
@@ -140,7 +144,7 @@ public class Game implements Runnable{
 		player.px = level[880].x;
 		player.py = level[880].y;
 		loading = 1;
-		/*diologs.clearBuff();
+		diologs.clearBuff();
 		diologs.add("");
 		diologs.add("");
 		diologs.add("");
@@ -151,11 +155,11 @@ public class Game implements Runnable{
 		diologs.add("но надеюсь что тебе будет интересно");
 		diologs.add("Так... Смотри, здесь тебе нужно просто дойти до вон той двери,");
 		diologs.add("вот ти штуки впереди это шипы, все понятно?");
-		diologs.start();*/
+		diologs.start();
 		music.play();
 	}
 	
-	public synchronized void stop() {
+	public synchronized static void stop() {
 		
 		if (!running)
 			return;
@@ -233,6 +237,13 @@ public class Game implements Runnable{
 			return;
 			
 		}
+		if(ending) {
+			if (besuka == 0) {
+				graphics.drawImage(GoodEnd,0,0,null);
+			}else {
+				graphics.drawImage(MidEnd,0,0,null);
+			}
+		}
 		int sx = 10;
 		float st = 0.5f;
 		graphics.setColor(new Color(0x1B0A1C));
@@ -281,6 +292,7 @@ public class Game implements Runnable{
 		graphics.drawString(String.valueOf(levelidx), 0, 60);
 		graphics.drawString(String.valueOf(player.Deaths), 0, Height-10);
 		graphics.drawString(String.valueOf(player.lvlDeaths), 0, Height);
+		graphics.drawString(String.valueOf(besuka), 0, Height-20);
 		
 		
 		FontMetrics fm = graphics.getFontMetrics();
@@ -362,7 +374,7 @@ public class Game implements Runnable{
 	
 	
 	
-	private void cleanUp() {
+	private static void cleanUp() {
 		Display.destroy();
 	}
 	

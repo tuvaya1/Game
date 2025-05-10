@@ -1,5 +1,6 @@
 package Game;
 
+import Display.Display;
 import Game.mapss.mapss;
 
 public class blocks {
@@ -24,6 +25,28 @@ public class blocks {
 	public static block rr = new block(-1,-1,true, 21,null);
 	public static block t = new block(-1,-1,true, 16,null);
 	public static block e = new block(-1,-1,false, 0,null);
+	
+	public static block ඞ = new block(-1,-1,false, 19,new Runnable() {
+
+		private int tmp = 0;
+		
+		@Override
+		public void run() {
+			if (Game.player.pidx == 579 && tmp > -1) {
+				tmp++;
+			}
+			if (tmp > 100) {
+				
+				diologs.clearBuff();
+				diologs.add("ТЫ ИЗДЕВАЕШЬСЯ!");
+				diologs.add("просто пройди уже последний уровень...");
+				diologs.start();
+				maps.nextLvl();
+				Game.besuka++;
+				tmp = -1;
+			}
+			
+		}});
 	public static block t1 = new block(-1,-1,true, 43,new Runnable() {
 
 		@Override
@@ -56,31 +79,38 @@ public class blocks {
 				Game.loadMap(mapss.map1_3);
 				diologs.clearBuff();
 				diologs.add("Знаешь что? вот тебе!");
+				Game.besuka++;
 				diologs.start();
 			}
 			maps.nextLvl();
 		}
 		
 	});
-	
+	public static int toDis = 0;
 	public static block Dv = new block(-1,-1,false, 42,new Runnable() {
 		
 		private int tmp = 0;
+		
 		@Override
 		public void run() {
 			int idx = Game.player.pidx;
-			if(idx == 468 || idx == 428 || idx == 429) {
+			if (tmp == 0 && (idx == 468 || idx == 428 || idx == 429)) {
 				
 				tmp = 1;
-				endset();
+				
 				
 			}
 			if (tmp == 1) {
-				diologs.start();
+				endset();
 				tmp = 2;
 			}
 			if(tmp > 0) {
-				
+				toDis--;
+				if(toDis< 0) {
+					Display.window.dispose();
+					System.exit(0);
+					
+				}
 				Game.level[Game.idx].y += 5;
 				
 			}
@@ -91,12 +121,20 @@ public class blocks {
 	
 	private static void endset() {
 		diologs.clearBuff();
-		diologs.add("ghjfkgfdklg");
-		diologs.add("ghjfkgfdklg");
-		diologs.add("ghjfkgfdklg");
-		diologs.add("ghjfkgfdklg");
-		diologs.add("ghjfkgfdklg");
-			
+		Game.ending = true;
+		Game.player.controls = true;
+		if (Game.besuka == 0) {
+			diologs.add("Ура, ты прошел мою игру!");
+			diologs.add("Ты харош!");
+		}else if (Game.besuka == 3) {
+			diologs.add("ТЫ УЖАСЕН!");
+			diologs.add("Я НЕ МОГУ ПРЕДСТАВИТЬ НИ ОДНОГО ЧЕЛОВЕКА КОТОРЫЙ ТАК ПЛОХО ИГРАЕТ!");
+			diologs.add("ЗНАЕШЬ ЧТО?!");
+			diologs.add("АРИВИДЕРЧИ!");
+			toDis = 800;
+		}
+		diologs.start();
+		System.out.println("!");
 	}
 	
 	public static block Do = new block(-1,-1,false, 42,new Runnable() {
@@ -200,7 +238,7 @@ public class blocks {
 				Game.loadMap(mapss.map1_2);
 				diologs.add("хорошо, я понял тебя...");
 				diologs.add("Никаких шипов и выход будет идти к тебе автоматически!");
-			
+				
 				
 				}
 			}
@@ -221,7 +259,7 @@ public class blocks {
 				Game.loadMap(mapss.map2_1);
 				diologs.add("Окей, хорошо.");
 				diologs.add("Теперь не должно быть проблем.");
-			
+				Game.besuka++;
 				
 				}
 				if(player.lvlDeaths == 4) {
@@ -229,12 +267,12 @@ public class blocks {
 				diologs.add("По твоему это смешно?");
 				diologs.add("Ты делаешь это специально?");
 				diologs.add("Ты должен просто дойти до двери, это так сложно?");
-			
+				diologs.add("Я сделал этот уровень более легким, теперь он не такой красивый");
 				
 				}
 				if(player.lvlDeaths == 5) {
 					maps.nextLvl();
-					diologs.add("Ладно, ладно, этот уровень будет наного лучше.");
+					diologs.add("Ладно, ладно, этот уровень будет намного лучше.");
 					diologs.add("Смотри.");
 				}
 				
@@ -254,7 +292,10 @@ public class blocks {
 				
 				diologs.add("Ладно, кажется я перестарался...");
 				diologs.add("Надеюсь теперь ты его пройдешь.");
-				
+				for(int i = 0; i < Game.Gmax*Game.Gmay; i++) {
+					if(Game.level[i].texture != 40 && (Game.level[i].texture > 37 && Game.level[i].texture < 42))
+					Game.level[i] = e;
+				}
 				}
 				if(player.lvlDeaths == 4) {
 					

@@ -222,31 +222,31 @@ public class mapss extends blocks {
 	
 	
 	public static block[] map3_1 = {
-			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
-			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
-			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,e, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
-			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,e, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
-			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,e, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,dr,d, dl,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,r,ds, l,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,r,e, l,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,r,e, l,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,r,e, l,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
 			                                                                                                                               
-			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,t1, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
-			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,e, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
-			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,e, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
-			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,e, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
-			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,e, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,r,t1, l,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,r,e, l,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,r,e, l,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,r,e, l,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,r,e, l,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
 			                                                                                                                                       
-			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,e, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
-			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,e, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
-			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,e, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
-			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,e, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
-			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,e, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,r,e, l,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,r,e, l,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,r,e, l,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,r,e, l,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,r,e, l,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
 			                                                                                                                                        
-			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,e, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
-			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,e, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
-			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,e, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
-			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,e, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
-			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,D, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,r,e, l,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,r,e, l,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,r,e, l,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,r,e, l,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,r,D, l,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,ඞ,w,
 			                                                  
-			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
+			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,ur,u, ul,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
 			w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w, w,w,w,w,w,
 			tech3_1                 
 			

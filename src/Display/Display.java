@@ -18,7 +18,7 @@ import Game.Game;
 public abstract class Display {
 	
 	private static Canvas content;
-	private static JFrame window;
+	public static JFrame window;
 	private static BufferedImage buffer;
 	private static int[] bufferData;
 	private static Graphics bufferGraphics;

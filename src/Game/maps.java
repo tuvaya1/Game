@@ -27,7 +27,7 @@ public class maps extends mapss {
 	static void nextLvl() {
 		if(!Game.player.controls) return;
 		int idx = (Game.level[Game.idx].x/16)+((Game.level[Game.idx].y/16)*Game.Gmax);
-		System.out.println(idx);
+		//System.out.println(idx);
 		if(idx == Game.player.pidx) {
 			if(Game.levelidx == 1)
 				Game.loadMap(mapss.map2);
@@ -65,6 +65,9 @@ public class maps extends mapss {
 					diologs.add("Ухх... наконец то...");
 					diologs.add("Извини меня, с этим уровнем точно проблем не будет");
 				}
+			}
+			if(Game.levelidx == 4 ) {
+				diologs.add("Это последний уровень, удачи");
 			}
 			diologs.start();
 			
