@@ -313,7 +313,7 @@ public class blocks {
 				diologs.add("Ладно, кажется я перестарался...");
 				diologs.add("Надеюсь теперь ты его пройдешь.");
 				for(int i = 0; i < Game.Gmax*Game.Gmay; i++) {
-					if(Game.level[i].texture != 40 && (Game.level[i].texture > 37 && Game.level[i].texture < 42))
+					if((Game.level[i].texture > 37 && Game.level[i].texture < 42))
 					Game.level[i] = e;
 				}
 				}

@@ -19,7 +19,7 @@ public class Menu implements Runnable{
 	public static final int     Width          = 640;
 	public static final int     height         = 352;
 	public static final String  Title          = "";
-	public static final int     _clearColor    = 0xFFFFFFFF;
+	public static final int     _clearColor    = 0xFF000000;
 	public static final int      numBuffers    = 3;
 	
 	public static final float   updateRate     = 60.0f;
@@ -42,6 +42,8 @@ public class Menu implements Runnable{
 	BufferedImage menuPressENTER2;
 	BufferedImage menuSMOff;
 	BufferedImage menuCopyr;
+	BufferedImage Titles;
+	BufferedImage perehod;
 	private BufferedImage menuLOGO;
 	private int time;
 	private boolean saveMode;
@@ -49,7 +51,9 @@ public class Menu implements Runnable{
 	private int tmp;
 	Sound music;
 	Sound start;
+	Sound titlee;
 	Sound pic;
+	private int titles;
 	
 	//
 	
@@ -66,12 +70,17 @@ public class Menu implements Runnable{
 		menuSMOn = ResourceLoader.loadimage("safetymodeenabled.png");
 		menuCopyr = ResourceLoader.loadimage("menucopyleft.png");
 		menuLOGO = ResourceLoader.loadimage("gamelogo.png");
+		Titles = ResourceLoader.loadimage("menumessage.png");
+		perehod = ResourceLoader.loadimage("perehod.png");
 		File f = new File("resource/Music/msc_menu.wav");
 		music = new Sound(f);
 		f = new File("resource/Sounds/sfx_restart.wav");
 		start = new Sound(f);
 		f = new File("resource/Sounds/sfx_dialogue.wav");
 		pic = new Sound(f);
+		f = new File("resource/Sounds/sfx_title.wav");
+		titlee = new Sound(f);
+		titles = 0;
 	}
 	
 	public synchronized void start() {
@@ -82,7 +91,7 @@ public class Menu implements Runnable{
 		running = true;
 		gameThread = new Thread(this);
 		gameThread.start();
-		music.play();
+		
 	}
 	
 	public synchronized void stop() {
@@ -103,7 +112,11 @@ public class Menu implements Runnable{
 	}
 	
 	private void update() {
-		
+		titles++;
+		if(titles == 360)
+			titlee.play();
+		if(titles == 555)
+		music.play();
 		int mx = Display.getScLoc().x;
 		int my = Display.getScLoc().y;
 		if (((mx > 600 && mx < 635) && (my > 310 && my < 345)) && Display.Mpress == 1) {
@@ -142,7 +155,18 @@ public class Menu implements Runnable{
 	
 	private void render() {
 		Display.clear();
-		
+		if(titles < 555) {
+			if(titles < 255) {
+				graphics.setColor(new Color(0,0,0,255-titles));
+			}
+			if(titles > 300) {
+				graphics.setColor(new Color(255,255,255,titles-300));
+			}
+			graphics.drawImage(Titles, 0, 0,null);
+			graphics.fillRect(0,0,Width,height);
+			Display.swapBuffers();
+			return;
+		}
 		graphics.drawImage(menuBG,time%640,0,null);
 		graphics.drawImage(menuBG,time%640-640,0,null);
 		graphics.drawImage(menuCopyr,(int) ((Math.cos(time*0.05)*5)),(int) ((Math.sin(time*0.05)*5)),null);
@@ -159,9 +183,9 @@ public class Menu implements Runnable{
 		graphics.drawImage(menuLOGO,224,(int) (70+(Math.sin(time*0.05)*10)),null);
 		graphics.setColor(Color.black);
 		if(tmp > 100) {
-			int tmp1 = (int) (640*((tmp-100)/100f));
+			int tmp1 = (int) (640*((tmp-100)/100f))-800;
 			
-			graphics.fillRect(0,0,Width,tmp1);
+			graphics.drawImage(perehod, 0, tmp1, null);
 		}
 		time ++;
 		

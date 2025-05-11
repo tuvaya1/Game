@@ -146,16 +146,16 @@ public class mapss extends blocks {
 			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,e, e,   e, e, e, D, e,     e,e,e,e,e, e,e,e,l,w,                                                                                                    
 			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,e, lu,  u, u, u, ru,e,     e,e,e,e,e, e,e,e,l,w,
 			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,e, ld,  d, d, d, rd,e,     e,e,e,e,e, e,e,e,l,w,
-			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,e, ds,  ds,ds,ds,ds,e,     e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,e, e,  e,e,e,e,e,     e,e,e,e,e, e,e,e,l,w,
 			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,e, e,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
 			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, lu,u, u, u, ru,   e,e,e,e, e,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,                                                                                      
 			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, ld,d, d, d, rd,   e,e,e,e, e,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
-			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, ds,ds,ds,ds,ds,   e,e,e,e, e,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e,e,e,e,e,   e,e,e,e, e,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
 			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,lu,ru,  e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
 			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,l, r,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
 			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, e, e, e, e, e,    e,e,e,l, r,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,                                                                                   
-			w,r,us,us,us,  us,us,us,us,us, us,us,us,us,us, lu,u, u, u, u,    u,u,u,ul,r,   us, us, us, us, us,     us,us,us,us,us, us,us,us,l,w,
-			w,ur,u,u,u,  u,u,u,u,u, u,u,u,u,u, ul, w, w, w, w,    w,w,w,w, ur,   u, u, u, u, u,     u,u,u,u,u, u,u,u,ul,w,
+			w,r,e,e,e,  e,e,e,e,e, e,e,e,e,e, lu,u, u, u, u,    u,u,u,ul,r,   e, e, e, e, e,     e,e,e,e,e, e,e,e,l,w,
+			w,ur,u,u,u, u,u,u,u,u, u,u,u,u,u, ul, w, w, w, w,    w,w,w,w, ur,   u, u, u, u, u,     u,u,u,u,u, u,u,u,ul,w,
 			tech2
 			
 			

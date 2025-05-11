@@ -64,7 +64,7 @@ public class Game implements Runnable{
 		private int loading;
 		static Sound music;
 		static boolean SaveMode;
-		static int besuka  = 3;
+		static int besuka;
 		public static boolean t;
 		static boolean playervis;
 		public static boolean ending;
@@ -138,7 +138,7 @@ public class Game implements Runnable{
 		f = new File("resource/Music/msc_results.wav");
 		endingM = new Sound(f);
 		Display.swapBuffers();
-		loadMap(maps.map4);
+		loadMap(maps.map1);
 		levelidx = 1;
 		/*for (int i = 0; i < 38; i++) {
 			

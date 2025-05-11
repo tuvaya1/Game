@@ -20,7 +20,7 @@ public class player {
 	static int dir = 0;
 	static int animation;
 	
-	float jumpForce = 5;
+	float jumpForce = 5.5f;
 	float playerSpeed = 1.5f;
 	int pidx;
 	boolean controls;
@@ -86,7 +86,7 @@ public class player {
 			animation = -1;
 			dir = (h == 1) ? 0 : 1;
 		}	
-		h = (h == 1) ? 1 : 0;
+		h = (sx > 1) ? 1 : 0;
 		
 		if(sy > 0.3) {
 			animation = 2;
@@ -108,21 +108,29 @@ public class player {
 			
 		} 
 		px += Math.round(sx);
-		if(Game.Current((px+8)/16, (int) (py+sy+ph)/16)) {
-			
-			if ((animation == -1)) {
-				animation = 1;
-			}else {
-				animation = 0;
+		if(sy > 0) {
+			if(Game.Current((px+8)/16, (int) (py+sy+(ph))/16)) {
+				
+				if ((animation == -1)) {
+					animation = 1;
+				}else {
+					animation = 0;
+				}
+				
+				py = (((int) (py+sy)/16))*16;
+				sy = 0;
+				if(v > 0) {jump.play();}
+				sy = v*-jumpForce;
+
 			}
-			
-			py = (((int) (py+sy)/16))*16;
-			sy = 0;
-			if(v > 0) {jump.play();}
-			sy = v*-jumpForce;
-			py += sy;
+		}else {
+			if(Game.Current((px+8)/16, (int) (py+sy)/16)) {
+
+				py = (((int) (py+sy+(ph))/16))*16;
+				sy = 0;
+
+			}
 		}
-		
 		py += sy;
 		sx = sx*0.8f;
 		sy += Game.g;
