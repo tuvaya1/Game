@@ -15,6 +15,9 @@ import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.util.Arrays;
 import javax.swing.JFrame;
+
+import utils.ResourceLoader;
+
 import utils.Input;
 
 import Game.Game;
@@ -78,7 +81,7 @@ public abstract class Display {
 			}
 			
 		});
-		
+		window.setIconImage(ResourceLoader.loadimage("icon.png"));
 		Dimension size = new Dimension(Width, Height);
 		window.getContentPane().add(content);
 		if (full) {
