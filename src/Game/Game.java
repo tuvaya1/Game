@@ -3,6 +3,7 @@ package Game;
 import java.awt.Color;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
@@ -62,6 +63,7 @@ public class Game implements Runnable{
 		private float time;
 		private float timet;
 		private int loading;
+		private BufferedImage BadEnd;
 		static Sound music;
 		static boolean SaveMode;
 		static int besuka;
@@ -120,6 +122,7 @@ public class Game implements Runnable{
 		player.loading();
 		BackGround = ResourceLoader.loadimage("102079.jpg");
 		GoodEnd = ResourceLoader.loadimage("ending1.png");
+		BadEnd = ResourceLoader.loadimage("ending2.png");
 		MidEnd = ResourceLoader.loadimage("ending3.png");
 		for (int i = 0; i < tiles; i++) {
 			String tmp = "tileset/1 (" + (String.valueOf(i)) +").png";
@@ -245,6 +248,8 @@ public class Game implements Runnable{
 		if(ending) {
 			if (besuka == 0) {
 				graphics.drawImage(GoodEnd,0,0,null);
+			}else if (besuka == 3) {
+				graphics.drawImage(BadEnd,0,0,null);
 			}else {
 				graphics.drawImage(MidEnd,0,0,null);
 			}
