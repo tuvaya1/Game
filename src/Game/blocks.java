@@ -169,8 +169,8 @@ public class blocks {
 				
 				if(tmp == 0) {
 				diologs.clearBuff();
-				diologs.add("Стоп, ты не можешь добрыгнуть?");
-				diologs.add("Мдээ... кажешься я немного просчитался...");
+				diologs.add("Стоп, ты не можешь допрыгнуть?");
+				diologs.add("Мдээ... кажется я немного просчитался...");
 				diologs.add("Попробуем-ка вот так!");
 				diologs.add("");
 
@@ -234,7 +234,7 @@ public class blocks {
 				
 				diologs.add("Так, смотри,");
 				diologs.add("Что бы пройти тебе нужно перепрыгнуть шипы");
-				diologs.add("Если ты их косаешься - ты умираешь.");
+				diologs.add("Если ты их касаешься - ты умираешь.");
 				diologs.add("Ты ведь сможешь, да?");
 				
 				}
