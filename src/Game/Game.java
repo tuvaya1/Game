@@ -313,8 +313,8 @@ public class Game implements Runnable{
 		graphics.drawString(String.valueOf(player.pidx), 0, 50);
 		graphics.drawString(String.valueOf(levelidx), 0, 60);
 		graphics.drawString(String.valueOf(player.Deaths), 0, Height-10);
-		graphics.drawString(String.valueOf(player.lvlDeaths), 0, Height);
-		graphics.drawString(String.valueOf(besuka), 0, Height-20);*/
+		graphics.drawString(String.valueOf(player.lvlDeaths), 0, Height);*/
+		graphics.drawString(String.valueOf(besuka), 0, Height-20);
 		//graphics.drawString(String.valueOf(SaveMode), 0, Height);
 		
 		FontMetrics fm = graphics.getFontMetrics();
